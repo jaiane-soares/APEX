@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #00020B;
+  display: flex;          /* Transforma o corpo em um organizador */
+  flex-direction: column; /* Coloca uma seção embaixo da outra */
+  align-items: center;    /* Centraliza tudo no meio da tela */
+}
+
+img {
+  max-width: 100%;        /* A imagem se ajusta ao tamanho da tela */
+  height: auto;           /* Não deixa a imagem esticada */
+}
