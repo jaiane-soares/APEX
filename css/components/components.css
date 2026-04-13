@@ -33,6 +33,11 @@
   white-space: nowrap;
 }
 
+.footer-sobre {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .instance-parent {
   display: flex;
   align-items: center;

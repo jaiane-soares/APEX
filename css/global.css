@@ -17,11 +17,18 @@
 
 /* Configurações Globais */
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: var(--color-white);
   color: var(--color-gray-dark);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+}
+
+main {
+  flex: 1;
 }
 
 /* TÍTULOS  */
