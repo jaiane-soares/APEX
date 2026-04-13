@@ -5,9 +5,21 @@
      <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="/css/components/components.css">
     <link rel="stylesheet" href="/css/pages/personalizar.css">
+    
 </head>
+
 <body>
     <div id="header-placeholder"></div>
+    <script type="module" src="../js/car-render.js"></script>
+
+    <script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
+  }
+}
+</script>
 
     <main class="viewport-apex">
     <canvas id="canvas-3d"></canvas>

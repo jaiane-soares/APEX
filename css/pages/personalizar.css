@@ -9,24 +9,33 @@
     width: 100vw;
     height: 100vh;
     position: relative;
-    background: #000;
+    background: #5f5f5f;
     overflow: hidden; /* Não deixa nada passar da borda */
 }
-
 #canvas-3d {
-    position: absolute;
+    position: absolute; /* Fixa o 3D no fundo da tela */
     top: 0;
     left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: block; 
+    z-index: 1; /* Garante que fica atrás dos 4 cards */
+    outline: none;
 }
+
+/* Garante que o container pai não limite o 3D */
+.personalizacao-full {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
 
 .ui-overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 25px; /* Respiro interno do Figma */
+    padding: 25px; 
     z-index: 10;
 }
 
@@ -40,9 +49,9 @@
 .card-figma {
     display: flex;
     align-items: center;
-    background: #111; /* Cor escura Apex */
+    background: #111; 
     border-radius: 20px;
-    height: 120px; /* Tamanho grande do Figma */
+    height: 120px; 
     overflow: hidden;
     border: 2px solid transparent;
     cursor: pointer;
@@ -50,7 +59,7 @@
 }
 
 .card-figma.active {
-    border-color: #2ecc71; /* Verde Apex */
+    border-color: var(--color-accent-green--)
 }
 
 /* IMAGEM NO QUADRO LATERAL */
@@ -72,6 +81,9 @@
 .info-box {
     padding-left: 20px;
 }
+
+
+
 
 .tag-figma {
     display: block;
