@@ -1,88 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="/css/components/components.css">
-    <link rel="stylesheet" href="/css/pages/personalizar.css">
-    
-</head>
-
-<body>
-    <div id="header-placeholder"></div>
-    <script type="module" src="../js/car-render.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex | Personalizar</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/components.css">
+    <link rel="stylesheet" href="../css/pages/personalizar.css">
 
     <script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js"
-  }
-}
-</script>
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
 
-    <main class="viewport-apex">
     <canvas id="canvas-3d"></canvas>
 
-    <div class="ui-overlay">
-        <div class="cards-grid-figma">
-            
-            <div class="card-figma active">
-                <div class="thumb-box">
-                    <img src="../assets/imagens/Cores.png" alt="Cores">
-                </div>
-                <div class="info-box">
-                    <span class="tag-figma">Personalização</span>
-                    <span class="title-figma">Cores</span>
-                </div>
+    <main class="content-wrapper">
+        <section class="ui-overlay">
+            <div id="color-menu" class="apex-selection-menu">
+                <div class="selection-item active" data-color="#FF0000"><div class="color-preview" style="background: #FF0000;"></div></div>
+                <div class="selection-item" data-color="#111111"><div class="color-preview" style="background: #111111;"></div></div>
+                <div class="selection-item" data-color="#FFFFFF"><div class="color-preview" style="background: #FFFFFF;"></div></div>
+                <div class="selection-item" data-color="#555555"><div class="color-preview" style="background: #555555;"></div></div>
+                <div class="selection-item" data-color="#2233AA"><div class="color-preview" style="background: #2233AA;"></div></div>
             </div>
 
-            <div class="card-figma">
-                <div class="thumb-box">
-                    <img src="../assets/imagens/Rodas.png" alt="Rodas">
+            <div id="main-cards" class="cards-grid-figma">
+                <div class="card-figma" id="card-cores">
+                    <div class="thumb-box"><img src="../assets/imagens/Cores.png" alt="Cores"></div>
+                    <div class="info-box">
+                        <span class="tag-figma">Personalização</span>
+                        <span class="title-figma">Cores</span>
+                    </div>
                 </div>
-                <div class="info-box">
-                    <span class="tag-figma">Personalização</span>
-                    <span class="title-figma">Rodas</span>
-                </div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Rodas.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Rodas</span></div></div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Carroceria.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Carroceria</span></div></div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Acessorios.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Acessórios</span></div></div>
             </div>
+        </section>
 
-            <div class="card-figma">
-                <div class="thumb-box">
-                    <img src="../assets/imagens/Carroceria.png" alt="Carroceria">
-                </div>
-                <div class="info-box">
-                    <span class="tag-figma">Personalização</span>
-                    <span class="title-figma">Carroceria</span>
-                </div>
-            </div>
+        <div id="footer-placeholder"></div>
+    </main>
 
-            <div class="card-figma">
-                <div class="thumb-box">
-                    <img src="../assets/imagens/Acessorios.png" alt="Acessórios">
-                </div>
-                <div class="info-box">
-                    <span class="tag-figma">Personalização</span>
-                    <span class="title-figma">Acessórios</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</main>
-    
-
-        </div>
-    </div>
-</main>
-
-        </div>
-    </section>
-</main>
-
-<div id="footer-placeholder"></div>
-<script src="../js/main.js"></script>
-<script type="module" src="../js/car-render.js"></script>
     <script src="../js/main.js"></script>
     <script type="module" src="../js/car-render.js"></script>
 </body>
