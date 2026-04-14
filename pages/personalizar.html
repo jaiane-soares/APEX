@@ -23,32 +23,41 @@
 
     <canvas id="canvas-3d"></canvas>
 
-    <main class="content-wrapper">
-        <section class="ui-overlay">
-            <div id="color-menu" class="apex-selection-menu">
-                <div class="selection-item active" data-color="#FF0000"><div class="color-preview" style="background: #FF0000;"></div></div>
-                <div class="selection-item" data-color="#111111"><div class="color-preview" style="background: #111111;"></div></div>
-                <div class="selection-item" data-color="#FFFFFF"><div class="color-preview" style="background: #FFFFFF;"></div></div>
-                <div class="selection-item" data-color="#555555"><div class="color-preview" style="background: #555555;"></div></div>
-                <div class="selection-item" data-color="#2233AA"><div class="color-preview" style="background: #2233AA;"></div></div>
-            </div>
+   <main class="ui-wrapper">
+    <div class="control-panel">
+        <div class="panel-content">
+            <header class="panel-header">
+                <h1>Ajuste seu Apex</h1>
+            </header>
 
-            <div id="main-cards" class="cards-grid-figma">
-                <div class="card-figma" id="card-cores">
-                    <div class="thumb-box"><img src="../assets/imagens/Cores.png" alt="Cores"></div>
-                    <div class="info-box">
-                        <span class="tag-figma">Personalização</span>
-                        <span class="title-figma">Cores</span>
+          
+
+            <div class="options-grid">
+                <div class="option-card active" id="card-cores">
+                    <div class="icon-box">
+                        <img src="../assets/imagens/Cores.png" alt="Cores">
+                    </div>
+                    <div class="text-box">
+                        <span class="category">Personalização</span>
+                        <span class="title">Cores</span>
                     </div>
                 </div>
-                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Rodas.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Rodas</span></div></div>
-                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Carroceria.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Carroceria</span></div></div>
-                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Acessorios.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Acessórios</span></div></div>
-            </div>
-        </section>
 
-        <div id="footer-placeholder"></div>
-    </main>
+                <div class="option-card">
+                    <div class="icon-box"><img src="../assets/imagens/Rodas.png"></div>
+                    <div class="text-box"><span class="category">Personalização</span><span class="title">Rodas</span></div>
+                </div>
+                <div class="option-card">
+                    <div class="icon-box"><img src="../assets/imagens/Carroceria.png"></div>
+                    <div class="text-box"><span class="category">Personalização</span><span class="title">Carroceria</span></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</main>
+
+    <div id="footer-placeholder"></div>
 
     <script src="../js/main.js"></script>
     <script type="module" src="../js/car-render.js"></script>

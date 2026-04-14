@@ -1,81 +1,103 @@
-/* TRAVA DE VIEWPORT */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body, html {
+/* Trava de tela para o 3D não fugir */
+html, body {
     width: 100%;
-    background-color: #000;
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #000;
 }
 
-/* CARRO FIXO NO FUNDO */
-#canvas-3d {
+/* UI Wrapper ocupando a tela inteira para posicionar o painel */
+.ui-wrapper {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-}
-
-
-.content-wrapper {
-    position: relative;
-    z-index: 10;
     width: 100%;
-}
-
-
-.ui-overlay {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 80px; 
+    z-index: 10;
     pointer-events: none;
 }
 
-.cards-grid-figma, .apex-selection-menu {
+/* Painel de Controle (Fundo desfocado) */
+.control-panel {
     pointer-events: auto;
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px 40px 0 0;
+    padding: 40px 60px; 
 }
 
-/* GRID DE CARDS*/
-.cards-grid-figma {
+.panel-header h1 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* Grid de Opções - RESOLVE O TAMANHO DOS CARDS */
+.options-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    
+    grid-template-columns: repeat(4, 240px); 
+    gap: 20px;
+    margin-top: 30px;
 }
 
-.card-figma {
+/* Estilo do Card individual */
+.option-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 12px;
     display: flex;
     align-items: center;
-    background: #111;
-    border-radius: 20px;
-    height: 110px; 
-    overflow: hidden;
+    height: 90px; 
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
-/* FOOTER: COBRE O CARRO AO SCROLLAR */
-#footer-placeholder {
-    position: relative;
-    z-index: 20;
-    background: #000; 
-    width: 100%;
-    min-height: 300px; 
+.option-card:hover, .option-card.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* MENUS */
-.apex-selection-menu {
-    display: none;
-    background: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+.icon-box {
+    width: 65px;
+    height: 65px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; 
 }
-.apex-selection-menu.active { display: flex; }
+
+.icon-box img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box .category {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.text-box .title {
+    font-size: 16px;
+    font-weight: 600;
+}
