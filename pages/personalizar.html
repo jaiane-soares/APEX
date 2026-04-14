@@ -2,12 +2,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex | Personalizar</title>
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/components/components.css">
     <link rel="stylesheet" href="../css/pages/personalizar.css">
-
+     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components/components.css">
+    <link rel="stylesheet" href="../css/pages/dentro-das-ruas.css">
+    <script src="../js/main.js"></script>
     <script type="importmap">
     {
       "imports": {
@@ -23,43 +23,49 @@
 
     <canvas id="canvas-3d"></canvas>
 
-   <main class="ui-wrapper">
-    <div class="control-panel">
-        <div class="panel-content">
-            <header class="panel-header">
-                <h1>Ajuste seu Apex</h1>
-            </header>
-
-          
-
-            <div class="options-grid">
-                <div class="option-card active" id="card-cores">
-                    <div class="icon-box">
-                        <img src="../assets/imagens/Cores.png" alt="Cores">
-                    </div>
-                    <div class="text-box">
-                        <span class="category">Personalização</span>
-                        <span class="title">Cores</span>
-                    </div>
-                </div>
-
-                <div class="option-card">
-                    <div class="icon-box"><img src="../assets/imagens/Rodas.png"></div>
-                    <div class="text-box"><span class="category">Personalização</span><span class="title">Rodas</span></div>
-                </div>
-                <div class="option-card">
-                    <div class="icon-box"><img src="../assets/imagens/Carroceria.png"></div>
-                    <div class="text-box"><span class="category">Personalização</span><span class="title">Carroceria</span></div>
+    <main class="ui-wrapper">
+        <div class="control-panel">
+            <div class="selection-area">
+                <div class="category-content active" id="content-cores">
+                    <div class="color-dot" style="background: #7300FF;" onclick="changeColor('#7300FF')"></div>
+                    <div class="color-dot" style="background: #00FF41;" onclick="changeColor('#00FF41')"></div>
+                    <div class="color-dot" style="background: #FFFFFF;" onclick="changeColor('#FFFFFF')"></div>
+                    <div class="color-dot" style="background: #FF0000;" onclick="changeColor('#FF0000')"></div>
                 </div>
                 
+                <div class="category-content" id="content-rodas">
+                    <button class="item-btn">ESPORTIVA V1</button>
+                    <button class="item-btn">CLASSIC R14</button>
+                </div>
+
+                <div class="category-content" id="content-carroceria">
+                    <button class="item-btn">AEROFÓLIO GSI</button>
+                </div>
+
+                <div class="category-content" id="content-acessorios">
+                    <button class="item-btn">NEON INFERIOR</button>
+                </div>
+            </div>
+
+            <div class="options-grid">
+                <div class="option-card active" data-target="cores" style="background-image: url('../assets/imagens/Cores.png')">
+                    <span class="title">Cores</span>
+                </div>
+                <div class="option-card" data-target="rodas" style="background-image: url('../assets/imagens/Rodas.png')">
+                    <span class="title">Rodas</span>
+                </div>
+                <div class="option-card" data-target="carroceria" style="background-image: url('../assets/imagens/Carroceria.png')">
+                    <span class="title">Carroceria</span>
+                </div>
+                <div class="option-card" data-target="acessorios" style="background-image: url('../assets/imagens/Acessorios.png')">
+                    <span class="title">Acessórios</span>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-    <div id="footer-placeholder"></div>
+    
 
-    <script src="../js/main.js"></script>
     <script type="module" src="../js/car-render.js"></script>
 </body>
 </html>

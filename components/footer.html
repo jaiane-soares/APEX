@@ -1,21 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Apex | Personalizar</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/personalizar.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+    </script>
+</head>
+<body>
+    <canvas id="canvas-3d"></canvas>
 
-  <div class="footer">
-  <img class="apex-icon" alt="APEX" src="/assets/icons/APEX.png">
-  <div class="home-parent">
-    <div class="home">HOME</div>
-    <div class="personalizar">PERSONALIZAR</div>
-    <div class="galeria">GALERIA</div>
-    <div class="sobre-ns">SOBRE NÓS</div>
-    <div class="navegar">NAVEGAR</div>
-    <div class="login">LOGIN</div>
-    <div class="gerar">GERAR</div>
-    <div class="cadastrar">CADASTRAR</div>
-  </div>
-  <div style="display:flex; gap:16px; align-items:center;">
-    <img class="instagram-icon" alt="Instagram" src="/assets/icons/Instagram.png">
-    <img class="github-icon" alt="GitHub" src="/assets/icons/GitHub.png">
-  </div>
-</div>
- 
-  	
-  
+    <main class="ui-wrapper">
+        <div class="control-panel">
+            <div class="selection-area">
+                <div class="category-content active" id="content-cores">
+                    <div class="color-dot" style="background: #7300FF;"></div>
+                    <div class="color-dot" style="background: #00FF41;"></div>
+                    <div class="color-dot" style="background: #FFFFFF;"></div>
+                </div>
+                <div class="category-content" id="content-rodas">
+                    <button class="item-btn">RODA ESPORTIVA</button>
+                    <button class="item-btn">RODA CLASSIC</button>
+                </div>
+                <div class="category-content" id="content-carroceria">
+                    <button class="item-btn">SPOILER</button>
+                    <button class="item-btn">SAIA LATERAL</button>
+                </div>
+            </div>
+
+            <div class="options-grid">
+                <div class="option-card active" data-target="cores">
+                    <div class="icon-box"><img src="../assets/imagens/Cores.png"></div>
+                    <div class="text-box"><span class="title">Cores</span></div>
+                </div>
+                <div class="option-card" data-target="rodas">
+                    <div class="icon-box"><img src="../assets/imagens/Rodas.png"></div>
+                    <div class="text-box"><span class="title">Rodas</span></div>
+                </div>
+                <div class="option-card" data-target="carroceria">
+                    <div class="icon-box"><img src="../assets/imagens/Carroceria.png"></div>
+                    <div class="text-box"><span class="title">Carroceria</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/car-render.js"></script>
+</body>
+</html>
