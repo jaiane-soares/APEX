@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Apex | Enviar Foto</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/upload.css">
+     
+    <link rel="stylesheet" href="../css/components/components.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main id="upload-main">
+        <div id="container-upload">
+            <h1 id="titulo-upload">Envie a foto do seu carro</h1>
+            <p id="subtitulo-upload">Anexe uma imagem do seu computador para iniciar a personalização.</p>
+            
+            <label for="file-input" id="drop-zone">
+                <div id="upload-icon">↑</div>
+                <span id="upload-text">Selecione ou arraste a foto</span>
+                <p id="upload-info">PNG, JPG ou JPEG (Máx: 5MB)</p>
+                <input type="file" id="file-input" accept="image/*" onchange="handleFileUpload(event)">
+            </label>
+
+            <div id="loading-feedback" style="display: none;">
+                <div class="spinner"></div>
+                <span>A processar imagem...</span>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/upload.js"></script>
+</body>
+</html>

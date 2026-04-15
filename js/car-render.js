@@ -1,16 +1,14 @@
-// jaiane-soares/apex/APEX-dev/js/car-render.js
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 let scene, camera, renderer, controls, carModel;
 let originalMaterials = new Map();
-let customWheels = [];
-let wheelPositions = [];
 
 function init() {
     scene = new THREE.Scene();
     
+    // Iluminação para realçar o metal
     const light1 = new THREE.DirectionalLight(0xffffff, 3);
     light1.position.set(5, 10, 5);
     scene.add(light1);
@@ -22,6 +20,7 @@ function init() {
     const canvas = document.querySelector('#canvas-3d');
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     controls = new OrbitControls(camera, renderer.domElement);
@@ -34,10 +33,12 @@ function init() {
         carModel.position.sub(box.getCenter(new THREE.Vector3()));
         
         carModel.traverse((node) => {
-            if (node.isMesh) originalMaterials.set(node.uuid, node.material.clone());
+            if (node.isMesh) {
+                originalMaterials.set(node.uuid, node.material.clone());
+            }
         });
         scene.add(carModel);
-    });
+    }, undefined, (error) => console.error("Erro no carregamento:", error));
 
     window.addEventListener('resize', onResize);
     animate();
@@ -56,23 +57,31 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Pintura Seletiva (Inglês)
+// Pintura Seletiva com Log de Debug
 window.changeColor = (colorHex, metal = 0.9, rough = 0.1) => {
     if (!carModel) return;
+
+    console.log("A verificar peças do modelo...");
     carModel.traverse((node) => {
         if (node.isMesh) {
             const nodeName = node.name.toLowerCase();
             const matName = node.material.name.toLowerCase();
-            const isIgnore = ["glass", "window", "wheel", "tire", "rubber", "interior"].some(key => 
-                nodeName.includes(key) || matName.includes(key)
-            ) || node.material.opacity < 1;
 
-            if (!isIgnore) {
+            // Portas, Capô e Traseira
+            const allowed = ["door", "hood", "bonnet", "trunk", "boot", "rear", "back", "hatch"];
+            const isTarget = allowed.some(key => nodeName.includes(key) || matName.includes(key));
+            
+            // Ignorar vidros
+            const isGlass = node.material.opacity < 1 || node.material.transparent || nodeName.includes("glass");
+
+            if (isTarget && !isGlass) {
+                console.log("A pintar peça:", node.name);
                 node.material = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(colorHex),
                     metalness: metal,
                     roughness: rough
                 });
+                node.material.needsUpdate = true;
             }
         }
     });
@@ -85,39 +94,13 @@ window.resetCarColor = () => {
     });
 };
 
-// Troca de Rodas Otimizada
-window.changeWheels = (path) => {
-    const loader = new GLTFLoader();
-    loader.load(path, (gltf) => {
-        customWheels.forEach(w => scene.remove(w));
-        customWheels = [];
-
-        if (wheelPositions.length === 0) {
-            carModel.traverse((n) => {
-                if (n.isMesh && (n.name.toLowerCase().includes("wheel") || n.name.toLowerCase().includes("rim"))) {
-                    n.visible = false;
-                    const p = new THREE.Vector3();
-                    n.getWorldPosition(p);
-                    wheelPositions.push(p);
-                }
-            });
-        }
-
-        wheelPositions.forEach(p => {
-            const clone = gltf.scene.clone();
-            clone.position.copy(p);
-            scene.add(clone);
-            customWheels.push(clone);
-        });
-    });
-};
-
 function setupTabs() {
     document.querySelectorAll('.card-opcao').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.card-opcao, .aba-conteudo').forEach(el => el.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById(`content-${btn.dataset.target}`).classList.add('active');
+            const target = document.getElementById(`content-${btn.dataset.target}`);
+            if (target) target.classList.add('active');
         });
     });
 }
