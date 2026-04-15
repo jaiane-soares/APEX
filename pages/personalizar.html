@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex | Personalizar</title>
+    <link rel="stylesheet" href="../css/global.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="../css/components/components.css">
+    <link rel="stylesheet" href="../css/pages/personalizar.css">
+
+=======
+    <link rel="stylesheet" href="../css/pages/personalizar.css">
+    <link rel="stylesheet" href="../css/components/components.css">
+    
+>>>>>>> 73afcd92f803a3f3c8700aaacc01073ec374895c
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+<<<<<<< HEAD
+
+    <canvas id="canvas-3d"></canvas>
+
+    <main class="content-wrapper">
+        <section class="ui-overlay">
+            <div id="color-menu" class="apex-selection-menu">
+                <div class="selection-item active" data-color="#FF0000"><div class="color-preview" style="background: #FF0000;"></div></div>
+                <div class="selection-item" data-color="#111111"><div class="color-preview" style="background: #111111;"></div></div>
+                <div class="selection-item" data-color="#FFFFFF"><div class="color-preview" style="background: #FFFFFF;"></div></div>
+                <div class="selection-item" data-color="#555555"><div class="color-preview" style="background: #555555;"></div></div>
+                <div class="selection-item" data-color="#2233AA"><div class="color-preview" style="background: #2233AA;"></div></div>
+            </div>
+
+            <div id="main-cards" class="cards-grid-figma">
+                <div class="card-figma" id="card-cores">
+                    <div class="thumb-box"><img src="../assets/imagens/Cores.png" alt="Cores"></div>
+                    <div class="info-box">
+                        <span class="tag-figma">Personalização</span>
+                        <span class="title-figma">Cores</span>
+                    </div>
+                </div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Rodas.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Rodas</span></div></div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Carroceria.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Carroceria</span></div></div>
+                <div class="card-figma"><div class="thumb-box"><img src="../assets/imagens/Acessorios.png"></div><div class="info-box"><span>Personalização</span><span class="title-figma">Acessórios</span></div></div>
+            </div>
+        </section>
+
+        <div id="footer-placeholder"></div>
+=======
+    
+    <canvas id="canvas-3d"></canvas>
+
+    <main id="ui-interface">
+        <aside id="menu-categorias">
+            <nav id="grid-opcoes">
+                <div class="card-opcao active" data-target="cores">
+                    <span class="label">Cores</span>
+                </div>
+                <div class="card-opcao" data-target="rodas">
+                    <span class="label">Rodas</span>
+                </div>
+                <div class="card-opcao" data-target="carroceria">
+                    <span class="label">Carroceria</span>
+                </div>
+            </nav>
+        </aside>
+
+        <aside id="menu-selecao">
+            <div id="container-itens">
+                
+                <div class="aba-conteudo active" id="content-cores">
+                    <h2 id="titulo-selecao">Pintura</h2>
+                    <div class="grid-selecao">
+                        <div class="cor-item" style="background: #191B23;" onclick="resetCarColor()" title="Original"></div>
+                        <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)" title="Roxo Metálico"></div>
+                        <div class="cor-item" style="background: #00FF41;" onclick="changeColor('#00FF41', 0.8, 0.2)" title="Verde Neon"></div>
+                        <div class="cor-item" style="background: #FF0000;" onclick="changeColor('#FF0000', 0.9, 0.1)" title="Vermelho Racing"></div>
+                    </div>
+                </div>
+
+                <div class="aba-conteudo" id="content-rodas">
+                    <h2 id="titulo-selecao">Rodas</h2>
+                    <div class="grid-selecao-botoes">
+                        <button class="btn-item" onclick="changeWheel('RodaBBS.glb')">BBS Motorsport</button>
+                        <button class="btn-item" onclick="changeWheel('RodaTE37.glb')">Volk TE37</button>
+                        <button class="btn-item" onclick="changeWheel('rodaGSIAtualizada.glb')">GSI Original</button>
+                    </div>
+                </div>
+
+                <div class="aba-conteudo" id="content-carroceria">
+                    <h2 id="titulo-selecao">Aero</h2>
+                    <div class="grid-selecao-botoes">
+                        <button class="btn-item" onclick="togglePart('aerofolio.glb')">Aerofólio Esportivo</button>
+                        <button class="btn-item" onclick="changePart('frontal', 'parachoqueFrontalNovo.glb')">Pá-choque Track</button>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+>>>>>>> 73afcd92f803a3f3c8700aaacc01073ec374895c
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script type="module" src="../js/car-render.js"></script>
+</body>
+</html>
