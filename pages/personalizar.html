@@ -18,49 +18,39 @@
     </script>
 </head>
 <body>
-    <div id="header-placeholder"></div>
+   <div id="header-placeholder"></div>
+<canvas id="canvas-3d"></canvas>
 
-    <canvas id="canvas-3d"></canvas>
+<main id="ui-interface">
+    <aside id="menu-categorias">
+        <nav id="grid-opcoes">
+            <div class="card-opcao active" data-target="cores">
+                <span class="label">Cores</span>
+            </div>
+            <div class="card-opcao" data-target="rodas">
+                <span class="label">Rodas</span>
+            </div>
+            <div class="card-opcao" data-target="rodas">
+                <span class="label">Carroceria</span>
+            </div>
+        </nav>
+    </aside>
 
-    <main id="ui-interface">
-        <aside id="menu-categorias">
-            <nav id="grid-opcoes">
-                <div class="card-opcao active" data-target="cores" id="opt-cores">
-                    <span class="label">Cores</span>
+    <aside id="menu-selecao">
+        <div id="container-itens">
+            <div class="aba-conteudo active" id="content-cores">
+                <h2 id="titulo-selecao">Pintura</h2>
+                <div id="grid-cores-expandido">
+                    <div class="cor-item" style="background: #555;" onclick="resetCarColor()"></div>
+                    <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)"></div>
+                    <div class="cor-item" style="background: #00FF41;" onclick="changeColor('#00FF41', 0.8, 0.2)"></div>
                 </div>
-                <div class="card-opcao" data-target="rodas" id="opt-rodas">
-                    <span class="label">Rodas</span>
-                </div>
-                <div class="card-opcao" data-target="carroceria" id="opt-carroceria">
-                    <span class="label">Carroceria</span>
-                </div>
-                <div class="card-opcao" data-target="acessorios" id="opt-acessorios">
-                    <span class="label">Acessórios</span>
-                </div>
-            </nav>
-        </aside>
-
-
-    <div id="container-itens">
-        <div class="aba-conteudo active" id="content-cores">
-            <h2 id="titulo-selecao">Cores</h2>
-
-            <div id="grid-cores-expandido">
-    <div class="cor-item" style="background: #555; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px;" onclick="resetCarColor()" title="Cor Original">Reset</div>
-    
-    
-</div>
-            <div id="grid-cores-expandido">
-                <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)" title="Roxo Apex"></div>
-                <div class="cor-item" style="background: #00FF41;" onclick="changeColor('#00FF41', 0.8, 0.2)" title="Verde Neon"></div>
-                <div class="cor-item" style="background: #FF0000;" onclick="changeColor('#FF0000', 0.9, 0.1)" title="Vermelho Sport"></div>
-                <div class="cor-item" style="background: #FFFFFF;" onclick="changeColor('#FFFFFF', 0.5, 0.0)" title="Branco Perolizado"></div>
-                <div class="cor-item" style="background: #2C2C2C;" onclick="changeColor('#2C2C2C', 1.0, 0.1)" title="Chumbo Metálico"></div>
-                
+            </div>
         </div>
-        </div>
-</aside>
-    </main>
+    </aside>
+</main>
+
+<script src="../js/main.js"></script>
 
     <script type="module" src="../js/car-render.js"></script>
 </body>

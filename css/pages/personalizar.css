@@ -15,32 +15,33 @@ html, body {
 }
 
 #ui-interface {
-    position: fixed; /* Fixa a interface sobre o 3D */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 10;
     display: flex;
     justify-content: space-between;
-    pointer-events: none;
-    z-index: 100; 
+    pointer-events: none; /* Permite girar o carro no centro */
+    z-index: 10;
 }
 
 #menu-categorias, #menu-selecao {
     width: 450px;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.9), transparent);
-    pointer-events: auto; 
+    background: linear-gradient(to right, rgba(0,0,0,0.95), transparent);
     padding: 60px 40px;
+    pointer-events: auto; /* Reativa cliques nos menus */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #menu-selecao {
-    background: linear-gradient(to left, rgba(0,0,0,0.9), transparent);
+    background: linear-gradient(to left, rgba(0,0,0,0.95), transparent);
+    align-items: flex-end;
 }
+
 #titulo-selecao {
     color: #fff;
     font-size: 1.8rem;
@@ -75,21 +76,18 @@ html, body {
 }
 
 .cor-item {
-    width: 75px;
-    height: 75px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-.cor-item:hover {
-    transform: translateY(-5px) scale(1.1);
-    border-color: #a2ff00;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: 0.3s;
 }
 
+.cor-item:hover {
+    border-color: #a2ff00; /* Alto contraste */
+    transform: scale(1.1);
+}
 .card-opcao .label {
     color: #fff;
     font-weight: bold;
