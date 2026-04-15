@@ -7,6 +7,8 @@
 
 body{
     background-color: #00020B;
+    width: 100%;
+    height: 2150px;
 }
 
 main{
@@ -43,6 +45,11 @@ main{
     gap: 8px;
 }
 
+#titulo a:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
 hr{
     border: none;
     height: 1px;
@@ -66,6 +73,21 @@ hr{
     height: 100%;
     object-fit: cover;
     border-radius: 16px;
+}
+
+#fotos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+
+    transition: all 0.3s ease; /* animação suave */
+    cursor: pointer; /* mostra que é clicável */
+}
+
+#fotos img:hover {
+    transform: scale(0.95); /* diminui levemente */
+    filter: brightness(70%); /* escurece */
 }
 
 #fotos img:nth-child(5n){
@@ -92,4 +114,32 @@ hr{
 
 #fotos img:nth-child(5){
     grid-row: span 4;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-conteudo {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.fechar {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
 }
