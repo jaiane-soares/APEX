@@ -54,6 +54,11 @@
   white-space: nowrap;
 }
 
+.footer-sobre {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .instance-parent {
   display: flex;
   align-items: center;
@@ -168,7 +173,7 @@
 .galeria     { grid-column: 2; grid-row: 1; font-weight: 500; }
 .sobre-ns    { grid-column: 2; grid-row: 2; font-weight: 500; }
 .navegar     { grid-column: 3; grid-row: 1; font-weight: 500; }
-.login       { grid-column: 3; grid-row: 2; font-weight: 500; }
+.footer-login{ grid-column: 3; grid-row: 2; font-weight: 500; }
 .gerar       { grid-column: 4; grid-row: 1; font-weight: 500; }
 .cadastrar   { grid-column: 4; grid-row: 2; font-weight: 500; }
 
