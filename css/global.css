@@ -92,3 +92,55 @@ small, .text-small {
 .button:hover {
   opacity: 0.9;
 }
+
+/* FORÇAR REMOÇÃO DE TODAS AS IMAGENS DO MENU */
+.category-card, 
+.category-card *, 
+.category-card::before, 
+.category-card::after {
+    background-image: none !important;
+    background: none !important;
+    content: none !important; /* Isso mata os ícones que aparecem via CSS */
+}
+
+/* ESTILO LIMPO (TEXTO E LINHA) */
+.categories-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #0a0a0a; /* Fundo preto puro */
+    border-top: 1px solid #222;
+}
+
+.category-card {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none !important;
+    position: relative;
+}
+
+.card-title {
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #ffffff;
+    opacity: 0.6;
+}
+
+.category-card.active .card-title {
+    opacity: 1;
+    color: #39FF14; /* Verde Apex */
+}
+
+/* LINHA VERDE EMBAIXO (ESTILO FIGMA) */
+.category-card.active::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    bottom: 0;
+    width: 60%;
+    height: 3px;
+    background: #39FF14;
+}

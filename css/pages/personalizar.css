@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* TRAVA DE VIEWPORT */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -79,3 +80,127 @@ body, html {
     margin-bottom: 20px;
 }
 .apex-selection-menu.active { display: flex; }
+=======
+/* Reset e Estrutura */
+html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #0d0d0d; /* Fundo escuro sólido para contraste */
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+#canvas-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; /* Garante que está acima do background do body */
+    display: block;
+}
+
+#ui-interface {
+     z-index: 100; /* Abaixo do header, mas acima do canvas */
+    margin-top: 70px; /* Altura do seu header */
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Crucial: permite girar o carro no centro */
+}
+
+#menu-categorias, #menu-selecao {
+    width: 350px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+    padding: 60px 40px;
+    pointer-events: auto; /* Reativa cliques nos menus */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#menu-selecao {
+    background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
+    align-items: flex-end;
+}
+
+#titulo-selecao {
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a2ff00;
+}
+
+.grid-selecao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.cor-item {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cor-item:hover {
+    border-color: #a2ff00;
+    transform: scale(1.1);
+}
+
+.btn-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    width: 220px;
+    cursor: pointer;
+    text-align: right;
+    transition: 0.3s;
+}
+
+.btn-item:hover {
+    background: #a2ff00;
+    color: #000;
+}
+
+.card-opcao {
+    height: 80px;
+    border-left: 4px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #666;
+}
+
+.card-opcao.active {
+    border-left-color: #a2ff00;
+    background: rgba(162, 255, 0, 0.1);
+    color: #fff;
+    transform: translateX(10px);
+}
+
+.aba-conteudo { display: none; }
+.aba-conteudo.active { display: block; }
+
+/* Garante que o placeholder do header aceite cliques e fique no topo */
+#header-placeholder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Acima de toda a interface */
+    pointer-events: auto;
+}
+
+>>>>>>> 73afcd92f803a3f3c8700aaacc01073ec374895c
