@@ -40,6 +40,8 @@ function handleFileUpload(event) {
             }
         };
 
+        
+
         // Lê o arquivo como URL Base64
         reader.readAsDataURL(file);
     }
