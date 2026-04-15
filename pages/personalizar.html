@@ -41,19 +41,32 @@
         </aside>
 
         <aside id="menu-selecao">
+            <div class="aba-conteudo" id="content-rodas">
+    <p class="section-title">Rodas Disponíveis</p>
+    <div id="grid-rodas">
+        <button class="btn-item" onclick="changeWheels('../assets/models/wheel_sport.glb')">RODA ORIGINAL</button>
+        <button class="btn-item" onclick="changeWheels('../assets/models/wheel_classic.glb')">BBS RS</button>
+        <button class="btn-item" onclick="changeWheels('../assets/models/rodaGSI.glb')">GSI</button>
+        <button class="btn-item" onclick="resetWheels()">ResetRodas</button>
+    </div>
+</div>
+
     <div id="container-itens">
         <div class="aba-conteudo active" id="content-cores">
             <h2 id="titulo-selecao">Cores</h2>
+
+            <div id="grid-cores-expandido">
+    <div class="cor-item" style="background: #555; display: flex; align-items: center; justify-content: center; color: white; font-size: 10px;" onclick="resetCarColor()" title="Cor Original">Reset</div>
+    
+    
+</div>
             <div id="grid-cores-expandido">
                 <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)" title="Roxo Apex"></div>
                 <div class="cor-item" style="background: #00FF41;" onclick="changeColor('#00FF41', 0.8, 0.2)" title="Verde Neon"></div>
                 <div class="cor-item" style="background: #FF0000;" onclick="changeColor('#FF0000', 0.9, 0.1)" title="Vermelho Sport"></div>
                 <div class="cor-item" style="background: #FFFFFF;" onclick="changeColor('#FFFFFF', 0.5, 0.0)" title="Branco Perolizado"></div>
                 <div class="cor-item" style="background: #2C2C2C;" onclick="changeColor('#2C2C2C', 1.0, 0.1)" title="Chumbo Metálico"></div>
-                <div class="cor-item" style="background: #0033FF;" onclick="changeColor('#0033FF', 1.0, 0.1)" title="Azul Elétrico"></div>
-                <div class="cor-item" style="background: #FFD700;" onclick="changeColor('#FFD700', 1.0, 0.05)" title="Ouro"></div>
-                <div class="cor-item" style="background: #C0C0C0;" onclick="changeColor('#C0C0C0', 1.0, 0.0)" title="Prata"></div>
-            </div>
+                
         </div>
         </div>
 </aside>

@@ -3,22 +3,18 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 let scene, camera, renderer, controls, carModel;
+let originalMaterials = new Map();
 
 function init() {
     scene = new THREE.Scene();
     
-    // Iluminação Profissional Ajustada
+    // Iluminação
     const light1 = new THREE.DirectionalLight(0xffffff, 3);
     light1.position.set(5, 10, 5);
     scene.add(light1);
     
     const light2 = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(light2);
-
-    // Luz de preenchimento para realçar o metal
-    const fillLight = new THREE.PointLight(0xa2ff00, 1);
-    fillLight.position.set(-5, 2, -5);
-    scene.add(fillLight);
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(8, 3, 8);
@@ -27,7 +23,7 @@ function init() {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace; // Garante cores fiéis
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -36,17 +32,19 @@ function init() {
     loader.load('../assets/models/kadettAntigo.glb', (gltf) => {
         carModel = gltf.scene;
         
-        // Centralização
         const box = new THREE.Box3().setFromObject(carModel);
         const center = box.getCenter(new THREE.Vector3());
         carModel.position.sub(center);
         
-        scene.add(carModel);
+        carModel.traverse((node) => {
+            if (node.isMesh) {
+                // Guarda o material original para o Reset
+                originalMaterials.set(node.uuid, node.material.clone());
+            }
+        });
 
-        // DEBUG: Descomente a linha abaixo para ver os nomes das peças no console do navegador
-        // carModel.traverse(n => n.isMesh && console.log("Peça encontrada:", n.name, "| Material:", n.material.name));
-        
-    }, undefined, (error) => console.error("Erro ao carregar o Kadett:", error));
+        scene.add(carModel);
+    }, undefined, (error) => console.error("Erro ao carregar o modelo:", error));
 
     window.addEventListener('resize', onResize);
     animate();
@@ -75,8 +73,17 @@ document.querySelectorAll('.card-opcao').forEach(card => {
     });
 });
 
-// jaiane-soares/apex/APEX-dev/js/car-render.js
+window.resetCarColor = () => {
+    if (!carModel) return;
+    carModel.traverse((node) => {
+        if (node.isMesh && originalMaterials.has(node.uuid)) {
+            node.material = originalMaterials.get(node.uuid).clone();
+            node.material.needsUpdate = true;
+        }
+    });
+};
 
+// FUNÇÃO DE CORES COM FILTRO EM INGLÊS
 window.changeColor = (colorHex, metal = 0.9, rough = 0.1) => {
     if (!carModel) return;
 
@@ -85,27 +92,93 @@ window.changeColor = (colorHex, metal = 0.9, rough = 0.1) => {
             const nodeName = node.name.toLowerCase();
             const matName = node.material.name.toLowerCase();
 
-            // Busca por qualquer parte que não seja vidro, pneu ou motor
-            const isIgnore = ["glass", "vidro", "tire", "pneu", "wheel", "roda", "interior"].some(key => 
-                nodeName.includes(key) || matName.includes(key)
-            );
+            // 1. FILTRO DE VIDROS (Nomes em Inglês)
+            const isGlass = 
+                nodeName.includes("glass") || 
+                nodeName.includes("window") || 
+                matName.includes("glass") || 
+                node.material.transparent === true || 
+                node.material.opacity < 1;
 
-            // Se não for para ignorar e parecer parte da lataria (ou se for o 'body')
-            if (!isIgnore || nodeName.includes("body")) {
-                
-                // Cria um novo material para garantir que as propriedades funcionem
+            // 2. FILTRO DE RODAS, PNEUS E INTERIOR (Nomes em Inglês)
+            const isIgnore = [
+                "wheel", "tire", "rim", "rubber", "interior", 
+                "seat", "mirror", "light", "chrome", "engine", 
+                "plastic", "black", "bolt", "handle"
+            ].some(key => nodeName.includes(key) || matName.includes(key));
+
+            // SÓ MUDA A COR SE: Não for vidro E não estiver na lista de ignorados
+            if (!isGlass && !isIgnore) {
                 node.material = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(colorHex),
                     metalness: metal,
                     roughness: rough,
                     envMapIntensity: 1.0
                 });
-                
                 node.material.needsUpdate = true;
             }
         }
     });
 };
 
+// jaiane-soares/apex/APEX-dev/js/car-render.js
+
+let customWheels = [];
+
+window.changeWheels = (wheelPath) => {
+    if (!carModel) return;
+
+    const loader = new GLTFLoader();
+    loader.load(wheelPath, (gltf) => {
+        const newWheelMaster = gltf.scene;
+
+        // Limpa rodas customizadas anteriores
+        customWheels.forEach(w => scene.remove(w));
+        customWheels = [];
+
+        carModel.traverse((node) => {
+            // Filtro rigoroso para localizar as rodas originais (nomes em inglês)
+            const isWheel = node.isMesh && (
+                node.name.toLowerCase().includes("wheel") || 
+                node.name.toLowerCase().includes("rim") ||
+                node.material.name.toLowerCase().includes("tire")
+            );
+
+            if (isWheel) {
+                // Esconde a roda original do Kadett
+                node.visible = false;
+
+                // Cria o clone da nova roda
+                const wheelClone = newWheelMaster.clone();
+                
+                // Posição: Obtém a posição mundial da roda antiga
+                const worldPos = new THREE.Vector3();
+                node.getWorldPosition(worldPos);
+                wheelClone.position.copy(worldPos);
+                
+                // Escala: Ajuste conforme o tamanho do seu modelo de roda
+                wheelClone.scale.set(1, 1, 1); 
+
+                scene.add(wheelClone);
+                customWheels.push(wheelClone);
+            }
+        });
+    }, undefined, (err) => console.error("Erro ao carregar a roda:", err));
+};
+
+window.resetWheels = () => {
+    // Remove rodas novas
+    customWheels.forEach(w => scene.remove(w));
+    customWheels = [];
+    
+    // Mostra as originais
+    if (carModel) {
+        carModel.traverse((node) => {
+            if (node.isMesh && (node.name.toLowerCase().includes("wheel") || node.name.toLowerCase().includes("rim"))) {
+                node.visible = true;
+            }
+        });
+    }
+};
 
 init();
