@@ -129,7 +129,7 @@
   	letter-spacing: -0.02em;
 	color: #fff;
 }
-.jaiane-item {
+.nossaft {
   	position: absolute;
   	top: 43px;
   	left: 48px;
@@ -137,6 +137,13 @@
   	background-color: #d9d9d9;
   	width: 109px;
   	height: 111px;
+}
+.nossaft img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+
 }
 .nome {
   	position: absolute;
@@ -156,7 +163,7 @@
   	font-weight: 500;
 	color: #fff;
 }
-.mitsubishi-lancer-evo {
+.sonho {
   	position: absolute;
   	top: 486px;
   	left: 48px;

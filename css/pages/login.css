@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login {
+  	width: 100%;
+  	height: 950px;
+  	position: relative;
+  	background-color: #00020b;
+  	overflow: hidden;
+  	text-align: left;
+  	font-size: 18px;
+  	color: #f2f2f2;
+  	font-family: Roboto;
+}
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #191b23;
+  border-radius: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 32px;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #f2f2f2;
+  font-family: Roboto;
+}
+/* .header {
+  	position: absolute;
+  	top: 42px;
+  	left: 32px;
+  	backdrop-filter: blur(4px);
+  	width: 1376px;
+  	height: 70px;
+}
+.header-child {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  	border-radius: 16px;
+  	background-color: #191b23;
+  	width: 1376px;
+  	height: 70px;
+  	opacity: 0.95;
+}
+.logotipo-icon {
+  	position: absolute;
+  	top: 12.99px;
+  	left: 68.07px;
+  	width: 132px;
+  	height: 44px;
+}
+.home-parent {
+  	position: absolute;
+  	top: calc(50% - 20px);
+  	left: calc(50% - 117px);
+  	width: 740px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	gap: 20px;
+}
+.home {
+  	position: relative;
+  	font-weight: 600;
+}
+.instance-parent {
+  	display: flex;
+  	align-items: center;
+  	gap: 24px;
+}
+.entrar-parent {
+  	width: 162px;
+  	border-radius: 8px;
+  	border: 2px solid #8cff00;
+  	box-sizing: border-box;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 8px 16px;
+  	gap: 8px;
+}
+.play-icon {
+  	height: 24px;
+  	width: 24px;
+  	position: relative;
+}
+.comear {
+  	height: 37px;
+  	width: 166px;
+  	border-radius: 8px;
+  	background-color: #8cff00;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 8px 16px;
+  	box-sizing: border-box;
+  	gap: 8px;
+  	color: #0b0e11;
+}
+.comear2 {
+  	position: relative;
+  	font-weight: 600;
+  	flex-shrink: 0;
+}
+.log-in-icon {
+  	height: 24px;
+  	width: 24px;
+  	position: relative;
+  	flex-shrink: 0;
+} */
+.login-child {
+  	position: absolute;
+  	top: 202px;
+  	left: 92px;
+  	border-radius: 16px 0px 0px 16px;
+  	background-color: #191b23;
+  	width: 535px;
+  	height: 601px;
+}
+.login-item {
+  	position: absolute;
+  	top: 226px;
+  	left: calc(50% - 157px);
+  	width: 314px;
+  	height: 70px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 10px;
+  	box-sizing: border-box;
+}
+.bem-vindo {
+  	position: absolute;
+  	top: 332px;
+  	left: 214px;
+  	font-size: 40px;
+  	letter-spacing: -0.02em;
+  	text-transform: uppercase;
+  	font-weight: 900;
+  	font-family: Unbounded;
+  	color: #fff;
+}
+.login-inner {
+  	position: absolute;
+  	top: 202px;
+  	left: 627px;
+  	border-radius: 0px 16px 16px 0px;
+  	background-color: #f2f2f2;
+  	width: 716px;
+  	height: 601px;
+}
+.login2 {
+  	position: absolute;
+  	top: 333px;
+  	left: 905px;
+  	font-size: 40px;
+  	letter-spacing: -0.02em;
+  	text-transform: uppercase;
+  	font-weight: 900;
+  	font-family: Unbounded;
+  	color: #000;
+}
+.crie-sua-conta {
+  	position: absolute;
+  	top: 406px;
+  	left: 207px;
+  	font-size: 24px;
+  	letter-spacing: -0.02em;
+  	font-weight: 500;
+  	color: #fff;
+  	display: inline-block;
+  	width: 303px;
+}
+.comear3 {
+  	position: absolute;
+  	top: 631px;
+  	left: 252px;
+  	border-radius: 8px;
+  	background-color: #8cff00;
+  	width: 214px;
+  	height: 50px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 8px 16px;
+  	box-sizing: border-box;
+  	color: #0b0e11;
+}
+input {
+    border: none;      /* Remove a borda padrão do navegador */
+    outline: none;     /* Remove o contorno ao clicar */
+    width: 100%;       /* Faz o input ocupar o espaço da div pai */
+    padding: 10px;     /* Dá um respiro para o texto não encostar nas bordas */
+    box-sizing: border-box; /* Garante que o padding não quebre o tamanho do campo */
+}
+.rectangle-parent {
+  	position: absolute;
+  	top: 403px;
+  	left: 715px;
+  	width: 540px;
+  	height: 84px;
+  	font-size: 20px;
+  	color: #a4a4a4;
+}
+.group-child {
+  	position: absolute;
+  	top: 24px;
+  	left: 0px;
+  	border-radius: 16px;
+  	border: 1px solid #000;
+  	box-sizing: border-box;
+  	width: 540px;
+  	height: 60px;
+}
+.gmailcom {
+  	position: absolute;
+  	top: 43px;
+  	left: 27px;
+  	letter-spacing: -0.02em;
+  	text-transform: uppercase;
+  	font-weight: 500;
+}
+.email {
+  	position: absolute;
+  	top: 0px;
+  	left: 11px;
+  	letter-spacing: -0.02em;
+  	font-weight: 500;
+  	color: #5b5b5b;
+}
+.rectangle-group {
+  	position: absolute;
+  	top: 506px;
+  	left: 715px;
+  	width: 540px;
+  	height: 83px;
+  	font-size: 20px;
+  	color: #a4a4a4;
+}
+.group-item {
+  	position: absolute;
+  	top: 23px;
+  	left: 0px;
+  	border-radius: 16px;
+  	border: 1px solid #000;
+  	box-sizing: border-box;
+  	width: 540px;
+  	height: 60px;
+}
+.senha {
+  	position: absolute;
+  	top: 42px;
+  	left: 27px;
+  	letter-spacing: -0.02em;
+  	text-transform: uppercase;
+  	font-weight: 500;
+}
+.saiba-mais {
+  	position: absolute;
+  	top: 631px;
+  	left: 878px;
+  	border-radius: 8px;
+  	background-color: #8cff00;
+  	width: 214px;
+  	height: 50px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 8px 16px;
+  	box-sizing: border-box;
+  	color: #191b23;
+}
+/* .footer {
+  	position: absolute;
+  	top: 915px;
+  	left: -1px;
+  	backdrop-filter: blur(4px);
+  	width: 1441.1px;
+  	height: 176px;
+}
+.footer-child {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  	background-color: #191b23;
+  	width: 1441.1px;
+  	height: 176px;
+  	opacity: 0.95;
+}
+.home-group {
+  	position: absolute;
+  	top: 64px;
+  	left: 431.5px;
+  	width: 705.5px;
+  	height: 48px;
+}
+.home2 {
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 186.4px;
+  	height: 18px;
+}
+.personalizar {
+  	position: absolute;
+  	top: 30px;
+  	left: 0.5px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 478.8px;
+  	height: 18px;
+}
+.galeria2 {
+  	position: absolute;
+  	top: 0px;
+  	left: 197.36px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 212.7px;
+  	height: 18px;
+}
+.sobre-ns2 {
+  	position: absolute;
+  	top: 30px;
+  	left: 197.36px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 360.1px;
+  	height: 18px;
+}
+.login3 {
+  	position: absolute;
+  	top: 30px;
+  	left: 410.5px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 49px;
+  	height: 18px;
+}
+.cadastrar {
+  	position: absolute;
+  	top: 30px;
+  	left: 609.5px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 96px;
+  	height: 18px;
+}
+.navegar {
+  	position: absolute;
+  	top: 0px;
+  	left: 410.5px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 74px;
+  	height: 18px;
+}
+.gerar {
+  	position: absolute;
+  	top: 0px;
+  	left: 609.5px;
+  	font-weight: 500;
+  	display: flex;
+  	align-items: center;
+  	width: 74px;
+  	height: 18px;
+}
+.github-icon {
+  	position: absolute;
+  	top: 60px;
+  	left: 1279px;
+  	width: 50px;
+  	height: 60px;
+  	object-fit: cover;
+}
+.instagram-icon {
+  	position: absolute;
+  	top: 60px;
+  	left: 1218px;
+  	width: 51px;
+  	height: 60px;
+  	object-fit: cover;
+}
+.apex-icon {
+  	position: absolute;
+  	top: 66px;
+  	left: 102px;
+  	width: 175.1px;
+  	height: 54px;
+} */
+
+.footer {
+  width: 100%;
+  height: 176px;
+  position: relative;
+  background-color: #191b23;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 102px;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #f2f2f2;
+  font-family: Roboto;
+}
