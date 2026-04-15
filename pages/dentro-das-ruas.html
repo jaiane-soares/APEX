@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/components/components.css">
     <link rel="stylesheet" href="../css/pages/dentro-das-ruas.css">
+    <link rel="stylesheet" href="../css/pages/transition.css"> 
     <script src="../js/main.js"></script>
 </head>
 
@@ -16,7 +17,9 @@
     <main>
         <section id="titulo">
             <h1> Galeria </h1>
-            <a href="#"> Adicione sua foto <img src="../assets/icons/camera_preta.png"/></a>
+            <a href="javascript:void(0)" onclick="pageTransition('upload.html')"> 
+                Adicione sua foto <img src="../assets/icons/camera_preta.png"/>
+            </a>
             
         </section>
         <hr/>
@@ -39,6 +42,7 @@
         </section>
     </main>
     <footer></footer>
-</body>
 
+    <script src="../js/transition.js"></script>
+</body>
 </html>
