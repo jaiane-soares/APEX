@@ -2,7 +2,7 @@
 html, body {
     margin: 0; padding: 0;
     width: 100%; height: 100%;
-    background: #000;
+    background: #827878;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
 }
@@ -15,33 +15,39 @@ html, body {
 }
 
 #ui-interface {
-    position: relative;
+    position: fixed; /* Fixa a interface sobre o 3D */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 10;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    height: 100vh;
-    pointer-events: none; /* Permite clicar no 3D no meio */
-}
+    pointer-events: none; }
 
-/* Painéis Laterais */
 #menu-categorias, #menu-selecao {
-    width: 320px;
+    width: 450px;
     height: 100%;
-    pointer-events: auto; /* Reativa cliques nos menus */
-    background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0));
-    padding: 40px;
+    background: linear-gradient(to right, rgba(0,0,0,0.9), transparent);
+    pointer-events: auto; 
+    padding: 60px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #menu-selecao {
-    background: linear-gradient(to left, rgba(0,0,0,0.9), rgba(0,0,0,0));
-    align-items: flex-end;
+    background: linear-gradient(to left, rgba(0,0,0,0.9), transparent);
+}
+#titulo-selecao {
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #a2ff00;
+    display: inline-block;
 }
 
-/* Estilo dos Cards (Esquerda) */
 #grid-opcoes {
     display: flex;
     flex-direction: column;
@@ -49,19 +55,37 @@ html, body {
 }
 
 .card-opcao {
-    height: 80px;
+    height: 100px; /* Card mais robusto */
     border-left: 4px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 30px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card-opcao.active {
     border-left-color: #a2ff00;
-    background: rgba(162, 255, 0, 0.1);
+    background: rgba(162, 255, 0, 0.15);
+    transform: translateX(10px);
+    box-shadow: -10px 0 20px rgba(162, 255, 0, 0.1);
+}
+
+.cor-item {
+    width: 75px;
+    height: 75px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.cor-item:hover {
+    transform: translateY(-5px) scale(1.1);
+    border-color: #a2ff00;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 .card-opcao .label {
