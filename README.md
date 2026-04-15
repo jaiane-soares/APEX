@@ -32,21 +32,24 @@ Para suportar o processamento de física e renderização sem gargalos, utilizam
 Estrutura pensada para expansão de novos modelos de veículos e fabricantes:
 
 ```text
-📁 Projeto-APEX/
-│
-├── 📁 public/                  # Assets estáticos e modelos 3D (GLTF/OBJ)
-├── 📁 src/
-│   ├── 📁 assets/              # Estilização global e imagens
-│   ├── 📁 components/          # UI Kit (Botões, Cards de Peças, Modais)
-│   ├── 📁 engine/              # Lógica de Tunagem (Cálculos de Performance)
-│   │   ├── 📄 PhysicsCore.js   # Algoritmos de aceleração e tração
-│   │   └── 📄 Compatibility.js # Validação de peças incompatíveis
-│   ├── 📁 pages/               # Views (Garagem, Loja, Dashboard)
-│   ├── 📁 services/            # Integração com API e LocalStorage
-│   └── 📄 App.js               # Entry Point
-│
-├── 📁 server/                  # Backend API
-│   ├── 📁 controllers/         # Lógica de negócio (Preços, Usuários)
-│   └── 📁 routes/              # Endpoints da aplicação
-│
-└── 📄 apex-config.json         # Definições globais de raridade e specs
+/ (raiz do projeto)
+├── 📁 .vscode/              # Configurações do editor
+├── 📁 api/                 # Funções Serverless (Vercel) para a IA (ex: reconhecimento.js)
+├── 📁 assets/              # Arquivos estáticos
+│   ├── 📁 images/          # Logos e ícones do sistema
+│   └── 📁 models/          # Onde você vai salvar o 'kadett_rebaixado.glb'
+├── 📁 css/                 # Estilização (Flexbox/Grid para o layout da câmera e 3D)
+├── 📁 data/                # JSONs com dados dos carros (ex: specs técnica do Kadett)
+├── 📁 js/                  # Toda a inteligência do site
+│   ├── 📄 camera.js        # Lógica de acesso à webcam/celular
+│   ├── 📄 vision-engine.js # Lógica da Visão Computacional (Reconhecer o modelo)
+│   ├── 📄 car-render.js    # Script do Three.js para carregar e girar o Kadett
+│   └── 📄 main.js          # Orquestrador (une a IA com o visualizador 3D)
+├── 📁 pages/               # Telas do sistema
+│   ├── 📄 personalizar.html # A TELA PRINCIPAL (IA + 3D)
+│   ├── 📄 sobre.html        # História e equipe
+│   └── 📄 galeria.html      # "Dentro das Ruas" (Projetos da comunidade)
+├── 📄 .editorconfig         # Padronização de código
+├── 📄 index.html           # Landing Page (Página de entrada)
+├── 📄 package.json          # Dependências (TensorFlow.js, Three.js)
+└── 📄 README.md             # Documentação do projeto
