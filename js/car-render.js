@@ -4,15 +4,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 let scene, camera, renderer, controls, carModel;
 let originalMaterials = new Map();
+const loader = new GLTFLoader();
 
 function init() {
     scene = new THREE.Scene();
     
-    // Iluminação para realçar o metal
-    const light1 = new THREE.DirectionalLight(0xffffff, 3);
-    light1.position.set(5, 10, 5);
-    scene.add(light1);
-    scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+    // Iluminação Profissional
+    const topLight = new THREE.DirectionalLight(0xffffff, 2);
+    topLight.position.set(5, 10, 5);
+    scene.add(topLight);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(8, 3, 8);
@@ -21,28 +22,76 @@ function init() {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.maxDistance = 15;
+    controls.minDistance = 4;
 
-    const loader = new GLTFLoader();
-    loader.load('../assets/models/kadettAntigo.glb', (gltf) => {
-        carModel = gltf.scene;
-        const box = new THREE.Box3().setFromObject(carModel);
-        carModel.position.sub(box.getCenter(new THREE.Vector3()));
-        
-        carModel.traverse((node) => {
-            if (node.isMesh) {
-                originalMaterials.set(node.uuid, node.material.clone());
+    // Carregamento inicial do Kadett
+   // jaiane-soares/apex/APEX-dev/js/car-render.js
+
+loader.load('../assets/models/kadettAntigo.glb', (gltf) => {
+    carModel = gltf.scene;
+    console.log("Modelo carregado com sucesso!"); // Log de sucesso
+    
+    // Centralização e escala
+    const box = new THREE.Box3().setFromObject(carModel);
+    const center = box.getCenter(new THREE.Vector3());
+    carModel.position.sub(center);
+    
+    scene.add(carModel);
+}, 
+(xhr) => {
+    console.log((xhr.loaded / xhr.total * 100) + '% carregado');
+}, 
+(error) => {
+    console.error("Erro ao carregar o modelo GLB:", error); 
+    // Se der erro aqui, o caminho '../assets/models/kadettAntigo.glb' está incorreto
+});
+
+// Lógica de Troca de Cor (Silent Integration)
+window.changeColor = (colorHex, metal = 0.9, rough = 0.2) => {
+    if (!carModel) return;
+    carModel.traverse((node) => {
+        if (node.isMesh) {
+            const name = node.name.toLowerCase();
+            const matName = node.material.name.toLowerCase();
+            
+            // Excluir vidros, pneus e faróis da pintura
+            const exclude = ["glass", "window", "pneu", "tire", "wheel", "light", "farol"];
+            const isExcluded = exclude.some(k => name.includes(k) || matName.includes(k));
+
+            if (!isExcluded && !node.material.transparent) {
+                node.material = new THREE.MeshStandardMaterial({
+                    color: new THREE.Color(colorHex),
+                    metalness: metal,
+                    roughness: rough
+                });
             }
-        });
-        scene.add(carModel);
-    }, undefined, (error) => console.error("Erro no carregamento:", error));
+        }
+    });
+};
 
-    window.addEventListener('resize', onResize);
-    animate();
-    setupTabs();
+window.resetCarColor = () => {
+    if (!carModel) return;
+    carModel.traverse(n => {
+        if (n.isMesh && originalMaterials.has(n.uuid)) {
+            n.material = originalMaterials.get(n.uuid).clone();
+        }
+    });
+};
+
+// Lógica de abas do menu
+function setupTabs() {
+    document.querySelectorAll('.card-opcao').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.card-opcao, .aba-conteudo').forEach(el => el.classList.remove('active'));
+            btn.classList.add('active');
+            const target = document.getElementById(`content-${btn.dataset.target}`);
+            if (target) target.classList.add('active');
+        });
+    });
 }
 
 function animate() {
@@ -57,57 +106,6 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// jaiane-soares/apex/APEX-dev/js/car-render.js
-
-window.changeColor = (colorHex, metal = 0.9, rough = 0.1) => {
-    if (!carModel) return;
-
-    carModel.traverse((node) => {
-        if (node.isMesh) {
-            const nodeName = node.name.toLowerCase();
-            const matName = node.material.name.toLowerCase();
-
-            // LISTA DE EXCLUSÃO (Peças que NÃO recebem cor)
-            const isExcluded = [
-                "glass", "window", "vidro", "para-brisa", // Vidros
-                "wheel", "tire", "pneu", "roda", "rim",   // Rodas e Pneus
-                "interior", "seat", "dashboard",          // Interior
-                "light", "farol", "mirror", "chrome"      // Detalhes
-            ].some(keyword => nodeName.includes(keyword) || matName.includes(keyword));
-
-            // Filtro extra por transparência (geralmente vidros)
-            const isTransparent = node.material.transparent || node.material.opacity < 1;
-
-            // SÓ MUDA A COR SE: Não estiver na lista de exclusão E não for transparente
-            if (!isExcluded && !isTransparent) {
-                node.material = new THREE.MeshStandardMaterial({
-                    color: new THREE.Color(colorHex),
-                    metalness: metal,
-                    roughness: rough,
-                    envMapIntensity: 1.0
-                });
-                node.material.needsUpdate = true;
-            }
-        }
-    });
-};
-
-window.resetCarColor = () => {
-    if (!carModel) return;
-    carModel.traverse(n => {
-        if (n.isMesh && originalMaterials.has(n.uuid)) n.material = originalMaterials.get(n.uuid).clone();
-    });
-};
-
-function setupTabs() {
-    document.querySelectorAll('.card-opcao').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.card-opcao, .aba-conteudo').forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-            const target = document.getElementById(`content-${btn.dataset.target}`);
-            if (target) target.classList.add('active');
-        });
-    });
-}
-
 init();
+
+}

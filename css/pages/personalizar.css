@@ -1,35 +1,37 @@
-/* Reset e Estrutura Sólida */
+/* Reset e Estrutura */
 html, body {
     margin: 0; padding: 0;
     width: 100%; height: 100%;
-    background: #827878;
+    background: #0d0d0d; /* Fundo escuro sólido para contraste */
     overflow: hidden;
     font-family: 'Inter', sans-serif;
 }
-
 #canvas-3d {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; /* Garante que está acima do background do body */
+    display: block;
 }
 
 #ui-interface {
+     z-index: 100; /* Abaixo do header, mas acima do canvas */
+    margin-top: 70px; /* Altura do seu header */
+    height: calc(100vh - 70px);
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
     display: flex;
     justify-content: space-between;
-    pointer-events: none; /* Permite girar o carro no centro */
-    z-index: 10;
+    pointer-events: none; /* Crucial: permite girar o carro no centro */
 }
 
 #menu-categorias, #menu-selecao {
-    width: 450px;
+    width: 350px;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.95), transparent);
+    background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
     padding: 60px 40px;
     pointer-events: auto; /* Reativa cliques nos menus */
     display: flex;
@@ -38,46 +40,27 @@ html, body {
 }
 
 #menu-selecao {
-    background: linear-gradient(to left, rgba(0,0,0,0.95), transparent);
+    background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
     align-items: flex-end;
 }
 
 #titulo-selecao {
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-bottom: 2px solid #a2ff00;
-    display: inline-block;
 }
 
-#grid-opcoes {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.card-opcao {
-    height: 100px; /* Card mais robusto */
-    border-left: 4px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    cursor: pointer;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card-opcao.active {
-    border-left-color: #a2ff00;
-    background: rgba(162, 255, 0, 0.15);
-    transform: translateX(10px);
-    box-shadow: -10px 0 20px rgba(162, 255, 0, 0.1);
+.grid-selecao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
 .cor-item {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     cursor: pointer;
@@ -85,53 +68,55 @@ html, body {
 }
 
 .cor-item:hover {
-    border-color: #a2ff00; /* Alto contraste */
+    border-color: #a2ff00;
     transform: scale(1.1);
-}
-.card-opcao .label {
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Seleção de Itens (Direita) */
-.aba-conteudo { display: none; flex-direction: column; align-items: flex-end; }
-.aba-conteudo.active { display: flex; }
-
-.section-title { color: #a2ff00; font-weight: bold; margin-bottom: 20px; }
-
-#lista-cores {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.cor-item {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .btn-item {
-    background: none;
-    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    padding: 15px;
+    padding: 12px 20px;
     margin-bottom: 10px;
-    width: 200px;
+    width: 220px;
     cursor: pointer;
+    text-align: right;
+    transition: 0.3s;
 }
 
+.btn-item:hover {
+    background: #a2ff00;
+    color: #000;
+}
+
+.card-opcao {
+    height: 80px;
+    border-left: 4px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #666;
+}
+
+.card-opcao.active {
+    border-left-color: #a2ff00;
+    background: rgba(162, 255, 0, 0.1);
+    color: #fff;
+    transform: translateX(10px);
+}
+
+.aba-conteudo { display: none; }
+.aba-conteudo.active { display: block; }
+
+/* Garante que o placeholder do header aceite cliques e fique no topo */
 #header-placeholder {
-    position: relative;
-    z-index: 9999; /* Valor bem alto para ignorar o resto */
-    pointer-events: auto; /* Garante que aceite cliques no header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Acima de toda a interface */
+    pointer-events: auto;
 }
 
-
-header, nav {
-    pointer-events: auto !important;
-}
