@@ -57,29 +57,34 @@ function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-// Pintura Seletiva com Log de Debug
+// jaiane-soares/apex/APEX-dev/js/car-render.js
+
 window.changeColor = (colorHex, metal = 0.9, rough = 0.1) => {
     if (!carModel) return;
 
-    console.log("A verificar peças do modelo...");
     carModel.traverse((node) => {
         if (node.isMesh) {
             const nodeName = node.name.toLowerCase();
             const matName = node.material.name.toLowerCase();
 
-            // Portas, Capô e Traseira
-            const allowed = ["door", "hood", "bonnet", "trunk", "boot", "rear", "back", "hatch"];
-            const isTarget = allowed.some(key => nodeName.includes(key) || matName.includes(key));
-            
-            // Ignorar vidros
-            const isGlass = node.material.opacity < 1 || node.material.transparent || nodeName.includes("glass");
+            // LISTA DE EXCLUSÃO (Peças que NÃO recebem cor)
+            const isExcluded = [
+                "glass", "window", "vidro", "para-brisa", // Vidros
+                "wheel", "tire", "pneu", "roda", "rim",   // Rodas e Pneus
+                "interior", "seat", "dashboard",          // Interior
+                "light", "farol", "mirror", "chrome"      // Detalhes
+            ].some(keyword => nodeName.includes(keyword) || matName.includes(keyword));
 
-            if (isTarget && !isGlass) {
-                console.log("A pintar peça:", node.name);
+            // Filtro extra por transparência (geralmente vidros)
+            const isTransparent = node.material.transparent || node.material.opacity < 1;
+
+            // SÓ MUDA A COR SE: Não estiver na lista de exclusão E não for transparente
+            if (!isExcluded && !isTransparent) {
                 node.material = new THREE.MeshStandardMaterial({
                     color: new THREE.Color(colorHex),
                     metalness: metal,
-                    roughness: rough
+                    roughness: rough,
+                    envMapIntensity: 1.0
                 });
                 node.material.needsUpdate = true;
             }
