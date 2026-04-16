@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -264,3 +264,282 @@
 	color: #fff;
 }
 
+
+ */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#00020b;
+    color:white;
+    font-family:Roboto, sans-serif;
+}
+
+/* Página */
+.sobre-page{
+    max-width:1400px;
+    margin:auto;
+    padding:120px 40px 80px;
+}
+
+/* Hero */
+.hero h1{
+    font-family:Unbounded;
+    font-size:48px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+	color: #fff;
+}
+
+.linha{
+    width:100%;
+    height:1px;
+    background:#fff;
+    opacity:.4;
+    margin-bottom:50px;
+}
+
+.foto-equipe img{
+    width:100%;
+    border-radius:16px;
+    display:block;
+}
+
+/* GRID DOS CARDS */
+.team{
+    margin-top:80px;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:30px;
+}
+
+/* CARD */
+.card{
+    background:#191b23;
+    border:2px solid #f3e601;
+    border-radius:16px;
+    padding:25px;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:20px;
+}
+
+/* TOPO */
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.social{
+    display:flex;
+    gap:10px;
+}
+
+.social img{
+    width:35px;
+    transition:.3s;
+}
+
+.social img:hover{
+    transform:scale(1.1);
+}
+
+/* INFO */
+.card-info h2{
+    font-family:Unbounded;
+    font-size:28px;
+    text-transform:uppercase;
+}
+
+.cargo{
+    opacity:.8;
+}
+
+/* FOTO CARRO */
+.carro-box img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* FOOTER */
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+    text-transform:uppercase;
+    gap:10px;
+}
+
+/* =======================================
+   RESPONSIVO - TABLET
+======================================= */
+@media (max-width: 1024px){
+
+  .sobre-page{
+    padding: 100px 30px 60px;
+  }
+
+  .hero h1{
+    font-size: 38px;
+  }
+
+  .team-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .card{
+    padding: 20px;
+  }
+
+  .card-info h2{
+    font-size: 24px;
+  }
+
+  .carro-box img{
+    height: 180px;
+  }
+
+  .card-footer{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+
+
+/* =======================================
+   RESPONSIVO - MOBILE
+======================================= */
+@media (max-width: 768px){
+
+  .sobre-page{
+    padding: 90px 20px 50px;
+  }
+
+  .hero h1{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .linha{
+    margin-bottom: 30px;
+  }
+
+  .foto-equipe img{
+    border-radius: 12px;
+  }
+
+  .team{
+    margin-top: 50px;
+  }
+
+  .team-grid{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card{
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .card-top{
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .social{
+    justify-content: center;
+  }
+
+  .card-info{
+    text-align: center;
+  }
+
+  .card-info h2{
+    font-size: 22px;
+  }
+
+  .cargo{
+    font-size: 15px;
+  }
+
+  .avatar{
+    width: 80px;
+    height: 80px;
+  }
+
+  .carro-box img{
+    height: 170px;
+  }
+
+  .card-footer{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+}
+
+
+/* =======================================
+   MOBILE PEQUENO
+======================================= */
+@media (max-width: 480px){
+
+  .sobre-page{
+    padding: 80px 15px 40px;
+  }
+
+  .hero h1{
+    font-size: 24px;
+  }
+
+  .card{
+    padding: 15px;
+  }
+
+  .card-info h2{
+    font-size: 20px;
+  }
+
+  .avatar{
+    width: 72px;
+    height: 72px;
+  }
+
+  .social img{
+    width: 30px;
+  }
+
+  .carro-box img{
+    height: 150px;
+  }
+
+  .card-footer{
+    font-size: 11px;
+  }
+}
