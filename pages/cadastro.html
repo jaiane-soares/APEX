@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap" />
+    <link rel="stylesheet" href="/css/pages/cadrasto.css" type="text/css">
+    <link rel="stylesheet" href="../css/global.css" type="text/css">
+    <link rel="stylesheet" href="/css/components/components.css" type="text/css">
+
+    <!-- defer garante que o JS só roda depois que toda a página carregou -->
+    <script src="../js/cadastro.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</head>
+<body>
+
+    <div class="cadastre-se">
+        <div id="header-placeholder"></div>
+
+        <div class="cadastre-se-child"></div>
+        <div class="bem-vindo" id="main-title">Bem vindo</div>
+        <div class="cadastre-se-item"></div>
+
+        <div class="cadastro" id="form-title">Cadastro</div>
+
+        <!-- Subtítulo do lado esquerdo — tem id para poder esconder no login -->
+        <div class="acesse-sua-conta" id="sub-title">Acesse sua conta agora mesmo.</div>
+
+        <!-- Botão lateral (Login / Cadastro) -->
+        <div class="comear3" onclick="showLogin()" style="cursor: pointer; z-index: 20;">
+            <div class="home" id="btn-side">Login</div>
+        </div>
+
+        <!-- Campo Nome — tem id para poder esconder no login -->
+        <div class="rectangle-group" id="field-name">
+            <div class="group-child"></div>
+            <input type="text" id="reg-name" class="input-field" placeholder="NOME COMPLETO">
+            <div class="email">Nome</div>
+        </div>
+
+        <!-- Campo Email -->
+        <div class="rectangle-parent">
+            <div class="group-child"></div>
+            <input type="email" id="reg-email" class="input-field" placeholder="SEU@EMAIL.COM">
+            <div class="email">Email</div>
+        </div>
+
+        <!-- Campo Senha -->
+        <div class="rectangle-container">
+            <div class="group-inner"></div>
+            <input type="password" id="reg-password" class="input-field" placeholder="******">
+            <div class="email">Senha</div>
+        </div>
+
+        <!-- Botão principal (Criar conta / Entrar) -->
+        <div class="saiba-mais" onclick="handleSubmit()" style="cursor: pointer; z-index: 20;">
+            <div class="home" id="btn-main">Criar conta</div>
+        </div>
+
+        
+    </div>
+<div id="footer-placeholder"></div>
+</body>
+</html>
