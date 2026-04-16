@@ -11,8 +11,8 @@
   --color-black: #00020B;
 
   /* Fontes */
-  --font-titles: 'Aileron', 'Helvetica', sans-serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-titles: 'Unbounded', black;
+  --font-body: 'Poppins', extra-bold;
 }
 
 /* Configurações Globais */

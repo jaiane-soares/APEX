@@ -1,0 +1,55 @@
+body {
+    background-color: #191B23;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.doc-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    border: 1px solid #333;
+    background-color: #1e2029;
+}
+
+.header-pdf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-apex {
+    background: #7300FF;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.dados-grid p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #2a2d3a;
+    padding-bottom: 10px;
+}
+
+.actions {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.btn-download {
+    background: #7300FF;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.btn-download:hover {
+    background: #5a00c7;
+    transform: translateY(-2px);
+}
