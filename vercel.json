@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*).glb",
@@ -6,6 +7,10 @@
         {
           "key": "Content-Type",
           "value": "model/gltf-binary"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }
