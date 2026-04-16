@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Apex | Orçamento Mecânico</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/documento.css">
+</head>
+<body class="bg-dark">
+    <main id="pdf-content" class="container">
+        <header class="doc-header">
+            <img src="../assets/icons/APEX.png" alt="Apex Logo">
+            <h1>Relatório de Customização</h1>
+            <p>Proprietário: <span id="user-name">Visitante</span></p>
+        </header>
+
+        <section class="car-summary">
+            <h2>Veículo: Chevrolet Kadett</h2>
+            <div id="lista-modificacoes">
+                <p><strong>Pintura:</strong> <span id="resumo-cor">Original</span></p>
+                <p><strong>Rodas:</strong> <span id="resumo-rodas">GSI Original</span></p>
+            </div>
+        </section>
+
+        <footer class="doc-footer">
+            <p>Gerado em: <span id="data-geracao"></span></p>
+        </footer >
+    </main>
+
+    <div class="actions">
+        <button id="btn-download" class="btn-primary">Baixar PDF</button>
+        <button onclick="window.history.back()" class="btn-secondary">Voltar</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script type="module" src="../js/documento-gerador.js"></script>
+</body>
+</html>

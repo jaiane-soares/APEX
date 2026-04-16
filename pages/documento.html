@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Apex | Relatório Técnico</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <style>
+        body { background-color: #191B23; color: white; font-family: 'Inter', sans-serif; }
+        .doc-container { max-width: 800px; margin: 50px auto; padding: 40px; border: 1px solid #333; }
+        .btn-download { background: #7300FF; color: white; padding: 15px 30px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="doc-container" id="conteudo-pdf">
+        <h1>Relatório para Mecânico</h1>
+        <hr>
+        <div id="dados-customizacao">
+            </div>
+    </div>
+    
+    <div style="text-align: center;">
+        <button class="btn-download" onclick="tentarDownload()">Baixar PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // 1. Carregar dados
+        const dados = JSON.parse(localStorage.getItem('apex_customizacao'));
+        if(dados) {
+            document.getElementById('dados-customizacao').innerHTML = `
+                <p><strong>Modelo:</strong> ${dados.veiculo}</p>
+                <p><strong>Cor Sugerida:</strong> ${dados.cor}</p>
+                <p><strong>Rodas:</strong> ${dados.rodas}</p>
+                <p><strong>Data:</strong> ${dados.data}</p>
+            `;
+        }
+
+        // 2. Validar Login e Download
+        function tentarDownload() {
+            // Verifica se existe um user logado no storage (ajuste conforme seu sistema)
+            const usuarioLogado = localStorage.getItem('user_logged'); 
+
+            if (!usuarioLogado) {
+                alert("Acesso restrito: Por favor, faça login para baixar o relatório técnico.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            const element = document.getElementById('conteudo-pdf');
+            html2pdf().from(element).save('Apex-Configuracao-Kadett.pdf');
+        }
+    </script>
+</body>
+</html>

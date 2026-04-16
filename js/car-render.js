@@ -95,4 +95,16 @@ function setupTabs() {
     });
 }
 
+// Adicione esta função ao final do seu car-render.js
+window.prepararRelatorio = () => {
+    const config = {
+        veiculo: "Chevrolet Kadett GSI",
+        cor: document.querySelector('.cor-item.active')?.getAttribute('title') || "Original",
+        rodas: document.querySelector('.btn-item.active')?.innerText || "Original",
+        data: new Date().toLocaleDateString('pt-BR')
+    };
+    
+    localStorage.setItem('apex_customizacao', JSON.stringify(config));
+    window.location.href = "documento.html"; // Redireciona para a página do documento
+};
 init();

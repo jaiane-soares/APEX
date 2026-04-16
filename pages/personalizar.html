@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex | Personalizar</title>
+    <title> Personalizar</title>
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/pages/personalizar.css">
     <link rel="stylesheet" href="../css/components/components.css">
@@ -35,6 +35,11 @@
                 <div class="card-opcao" data-target="carroceria">
                     <span class="label">Carroceria</span>
                 </div>
+                <div class="card-opcao" data-target="documento">
+                    <span class="label">Documento</span>
+                    
+                </div>
+                
                 
             </nav>
         </aside>
@@ -66,7 +71,19 @@
                         <button class="btn-item" onclick="togglePart('aerofolio.glb')">Aerofólio Esportivo</button>
                         <button class="btn-item" onclick="changePart('frontal', 'parachoqueFrontalNovo.glb')">Pá-choque Track</button>
                     </div>
+
+                   
                 </div>
+                 <div class="documento" id="documento">
+                    <h2 id="titulo-selecao">GERAR PDF</h2>
+                    <div class="grid-selecao-botoes">
+                        
+                        <button class="btn-item" onclick="changeWheel('prepararRelatorio')">Gerar PDF</button>
+                    </div>
+                </div>
+
+
+                
 
             </div>
         </aside>
