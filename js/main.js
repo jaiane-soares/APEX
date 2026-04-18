@@ -236,7 +236,7 @@ function entrar() {
             sessionStorage.setItem("usuarioLogado", usuario.nome);
             mostrarNotificacao(`Bem vindo de volta, ${usuario.nome}!`, "sucesso");
             setTimeout(() => {
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             }, 1500);
         } else {
             mostrarNotificacao("Senha incorreta. Tente novamente.", "erro");
