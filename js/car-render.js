@@ -27,7 +27,7 @@ function init() {
     controls.enableDamping = true;
 
     // Carregamento do Kadett
-    loader.load('../assets/models/kadettAntigoo.glb', (gltf) => {
+    loader.load('/assets/models/kadettAntigoo.glb', (gltf) => {
         carModel = gltf.scene;
         
         // Centralização do modelo
