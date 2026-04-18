@@ -27,8 +27,18 @@ function init() {
     controls.enableDamping = true;
 
     // Carregamento do Kadett
-    loader.load('/assets/models/kadettAntigoo.glb', (gltf) => {
-        carModel = gltf.scene;
+    console.log("Tentando carregar modelo de:", window.location.origin + '/assets/models/kadettAntigoo.glb');
+
+loader.load('/assets/models/kadettAntigoo.glb', (gltf) => {
+    carModel = gltf.scene;
+    // ... restante do código
+    console.log("Modelo carregado!");
+}, (xhr) => {
+    console.log((xhr.loaded / xhr.total * 100) + '% carregado');
+}, (error) => {
+    console.error("ERRO DE CARREGAMENTO:", error);
+    // Isso vai te dizer se é 404 ou erro de parse
+
         
         // Centralização do modelo
         const box = new THREE.Box3().setFromObject(carModel);
