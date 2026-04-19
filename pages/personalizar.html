@@ -9,29 +9,23 @@
     <link rel="stylesheet" href="../css/pages/personalizar.css">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
-        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js"
-      }
-    }
-    </script>
+    
 </head>
 <body>
     <div id="header-placeholder"></div>
     
     <model-viewer 
     id="car-viewer"
-    src="/assets/models/kadettAntigoo.glb" 
+    src="../assets/models/kadettAntigoo.glb" 
     alt="Chevrolet Kadett GSI"
-    camera-controls 
-    auto-rotate 
-    shadow-intensity="1"
-    exposure="1"
+    camera-controls auto-rotate shadow-intensity="1" exposure="1"
     environment-image="neutral"
     style="width: 100%; height: 100%; background-color: transparent;">
+    
+    <div slot="roda-fl" id="slot-roda-fl"></div>
+    <div slot="roda-fr" id="slot-roda-fr"></div>
+    <div slot="roda-bl" id="slot-roda-bl"></div>
+    <div slot="roda-br" id="slot-roda-br"></div>
 </model-viewer>
 
     <main id="ui-interface">
@@ -55,19 +49,18 @@
                 <div class="aba-conteudo active" id="content-cores">
                     <h2 id="titulo-selecao">Pintura</h2>
                     <div class="grid-selecao">
-                        <div class="cor-item" style="background: #191B23;" onclick="resetCarColor()" title="Original"></div>
-                        <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)" title="Roxo Metálico"></div>
-                        <div class="cor-item" style="background: #071c83;" onclick="changeColor('#071c83', 0.8, 0.2)" title="Verde Neon"></div>
-                        <div class="cor-item" style="background: #FF0000;" onclick="changeColor('#FF0000', 0.9, 0.1)" title="Vermelho Racing"></div>
-                    </div>
+                                        <label for="colorPicker" class="color-picker-label">
+                            Escolha uma cor personalizada:
+                            <input type="color" id="colorPicker" value="#071c83">
+                        </label>
                 </div>
 
-                <div class="aba-conteudo" id="content-rodas">
+                                <div class="aba-conteudo" id="content-rodas">
                     <h2 id="titulo-selecao">Rodas</h2>
                     <div class="grid-selecao-botoes">
                         <button class="btn-item" onclick="changeWheel('RodaBBS.glb')">BBS Motorsport</button>
                         <button class="btn-item" onclick="changeWheel('RodaTE37.glb')">Volk TE37</button>
-                        <button class="btn-item" onclick="changeWheel('rodaGSIAtualizada.glb')">GSI Original</button>
+                        <button class="btn-item" onclick="changeWheel('rodaGSI.glb')">GSI Original</button>
                     </div>
                 </div>
 
