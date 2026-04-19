@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/assets/models/:file*",
+      "destination": "/assets/models/:file*"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/models/(.*).glb",
