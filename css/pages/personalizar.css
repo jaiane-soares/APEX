@@ -1,4 +1,4 @@
-/* Reset e Estrutura */
+
 html, body {
     margin: 0; padding: 0;
     width: 100%; height: 100%;
@@ -7,7 +7,7 @@ html, body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Remova ou altere o #canvas-3d para model-viewer */
+
 model-viewer {
     position: absolute;
     top: 0; 
@@ -29,7 +29,7 @@ model-viewer {
     z-index: 9999;
     
     z-index: 100; /* Abaixo do header, mas acima do canvas */
-    margin-top: 70px; /* Altura do seu header */
+    margin-top: 70px; 
     height: calc(100vh - 70px);
 }
 
@@ -136,4 +136,26 @@ model-viewer {
     border-radius: 8px;
     cursor: pointer;
     background: transparent;
+}
+
+slot model-viewer {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#car-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes chegadaGaragem {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
