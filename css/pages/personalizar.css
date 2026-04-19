@@ -7,11 +7,19 @@ html, body {
     font-family: 'Inter', sans-serif;
 }
 
-#canvas-3d {
+/* Remova ou altere o #canvas-3d para model-viewer */
+model-viewer {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
     z-index: 1;
+}
+
+/* Garanta que o menu fique acima do viewer */
+#ui-interface {
+    z-index: 10;
 }
 
 #ui-interface {
