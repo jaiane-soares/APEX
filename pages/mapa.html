@@ -6,19 +6,28 @@
     <title>Mapa de Eventos</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="/css/pages/mapa.css" />
+    <link rel="stylesheet" href="/css/components/components.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
 
+    
+        
     <main>
-        <div id="map"></div>
+    <div id="map"></div>
 
-        <aside class="container-eventos">
-            <h2>Próximos Eventos</h2>
-            <div id="lista-eventos"></div>
-        </aside>
-    </main>
+   <aside class="container-eventos">
+    <h2>Próximos Eventos</h2>
+    
+    <div class="filtros-container">
+        <button onclick="filtrarEventos('todos')">Todos</button>
+        <button onclick="filtrarEventos('Encontro')">Encontros</button>
+        <button onclick="filtrarEventos('Track Day')">Track Days</button>
+    </div>
 
+    <div id="lista-eventos"></div>
+</aside>
+</main>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mapa.js"></script>
