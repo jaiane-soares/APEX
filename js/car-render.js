@@ -1,55 +1,64 @@
-const modelViewer = document.querySelector('#car-viewer');
 
-// Função de troca de roda - Corrigida
+
+
+const carViewer = document.querySelector('#car-viewer');
+
+// 1. TROCA DE RODAS (Método seguro: altera apenas o atributo src)
 window.changeWheel = (fileName) => {
     const wheelPath = `../assets/models/${fileName}`;
-    console.log("🛠️ Trocando roda para:", wheelPath);
+    console.log("🛠️ Trocando rodas para:", wheelPath);
     
-    // Oculta a roda original do modelo KadettGSI.glb
-    if (modelViewer.model) {
-        modelViewer.model.materials.forEach((material) => {
-            if (material.name.toLowerCase().includes('roda')) {
-                material.pbrMetallicRoughness.setBaseColorFactor([0, 0, 0, 0]);
-            }
-        });
-    }
+    // Lista de IDs dos elementos de roda já existentes no HTML
+    const slotIds = ['slot-roda-fl', 'slot-roda-fr', 'slot-roda-bl', 'slot-roda-br'];
     
-    // Carrega a nova roda em cada slot
-    const slots = ['slot-roda-fl', 'slot-roda-fr', 'slot-roda-bl', 'slot-roda-br'];
-    slots.forEach(slotId => {
-        const slotEl = document.getElementById(slotId);
-        if (slotEl) {
-            // Cria um novo viewer de roda dentro do slot
-            slotEl.innerHTML = `<model-viewer src="${wheelPath}" style="width:100%; height:100%;" autoplay></model-viewer>`;
+    slotIds.forEach(id => {
+        const wheelEl = document.getElementById(id);
+        if (wheelEl) {
+            // Apenas altera o caminho do arquivo, mantendo o objeto 3D vivo
+            wheelEl.setAttribute('src', wheelPath);
         }
     });
 };
 
-// --- PINTURA ---
+// 2. PINTURA (Método seguro: verifica a existência do modelo antes de pintar)
 window.changeColor = (colorHex) => {
-    if (!modelViewer.model) return;
+    // Se o modelo principal ainda não carregou, sai da função
+    if (!carViewer.model) {
+        console.warn("Aguardando modelo carregar para aplicar a cor...");
+        return;
+    }
+    
+    // Converte HEX para RGB (0 a 1)
     const r = parseInt(colorHex.slice(1, 3), 16) / 255;
     const g = parseInt(colorHex.slice(3, 5), 16) / 255;
     const b = parseInt(colorHex.slice(5, 7), 16) / 255;
-    modelViewer.model.materials.forEach((material) => {
+    
+    // Aplica a cor apenas nos materiais que contêm "carro_" no nome
+    carViewer.model.materials.forEach((material) => {
         if (material.name.toLowerCase().includes('carro_')) {
             material.pbrMetallicRoughness.setBaseColorFactor([r, g, b, 1]);
         }
     });
 };
 
-// LIGAÇÃO DE EVENTOS (Removemos o onclick do HTML, usamos isto aqui)
+// 3. INICIALIZAÇÃO E EVENTOS
 document.addEventListener('DOMContentLoaded', () => {
-    // Escuta cliques nos botões de roda
+    
+    // Listener para os botões de troca de roda
     document.querySelectorAll('.btn-item[data-model]').forEach(btn => {
         btn.addEventListener('click', () => {
-            changeWheel(btn.getAttribute('data-model'));
+            const modelFile = btn.getAttribute('data-model');
+            window.changeWheel(modelFile);
         });
     });
     
-    // Escuta cor
+    // Listener para o seletor de cor
     const colorPicker = document.getElementById('colorPicker');
     if (colorPicker) {
-        colorPicker.addEventListener('input', (e) => changeColor(e.target.value));
+        colorPicker.addEventListener('input', (e) => {
+            window.changeColor(e.target.value);
+        });
     }
+
+    console.log("✅ APEX Render Engine carregada com sucesso.");
 });

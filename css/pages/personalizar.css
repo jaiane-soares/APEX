@@ -17,6 +17,20 @@ model-viewer {
     z-index: 1;
 }
 
+.roda-fixa {
+    position: absolute;
+    width: 15%; /* Ajusta o tamanho conforme necessário */
+    height: 15%;
+    z-index: 10;
+    pointer-events: none; /* Crucial para o carro continuar girando */
+}
+
+/* POSICIONAMENTO: Ajusta estes valores no teu navegador (F12) até ficarem nos eixos */
+#slot-roda-fl { top: 60%; left: 20%; } 
+#slot-roda-fr { top: 60%; left: 70%; }
+#slot-roda-bl { top: 60%; left: 20%; }
+#slot-roda-br { top: 60%; left: 70%; }
+
 /* Garanta que o menu fique acima do viewer */
 
 #ui-interface {
