@@ -1,48 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <title>Mapa de Eventos</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="/css/pages/mapa.css" />
-    <link rel="stylesheet" href="../css/components/components.css"/>
-    
-    
-    <title>Document</title>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
     <main>
-        <aside class="container-perfil">
-             </aside>
+        <div id="map"></div>
 
-        <section class="container-conteudo">
-            <div id="map"></div>
-        </section>
-
-        <script src="../js/main.js"></script>
+        <aside class="container-eventos">
+            <h2>Próximos Eventos</h2>
+            <div id="lista-eventos"></div>
+        </aside>
     </main>
-   
-   
-<div id="map" style="width: 100%; height: 500px;"></div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-    
-    console.log("Leaflet carregado:", L);
-
-    var map = L.map('map').setView([-23.5505, -46.6333], 12);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: 'Map data &copy; OpenStreetMap contributors'
-    }).addTo(map);
-</script>
-
-
-        
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/mapa.js"></script>
 </body>
 </html>
