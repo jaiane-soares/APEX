@@ -1,101 +1,64 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-let scene, camera, renderer, controls, carModel;
-let originalMaterials = new Map();
-const loader = new GLTFLoader();
 
-function init() {
-    scene = new THREE.Scene();
+
+const carViewer = document.querySelector('#car-viewer');
+
+// 1. TROCA DE RODAS (Método seguro: altera apenas o atributo src)
+window.changeWheel = (fileName) => {
+    const wheelPath = `../assets/models/${fileName}`;
+    console.log("🛠️ Trocando rodas para:", wheelPath);
     
-    // Iluminação para destacar o contraste (Estética do Contraste)
-    const topLight = new THREE.DirectionalLight(0xffffff, 2);
-    topLight.position.set(5, 10, 5);
-    scene.add(topLight);
-    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-
-    camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(8, 3, 8);
-
-    const canvas = document.querySelector('#canvas-3d');
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-
-    // Carregamento do Kadett
-    loader.load('../assets/models/kadettAntigoo.glb', (gltf) => {
-        carModel = gltf.scene;
-        
-        // Centralização do modelo
-        const box = new THREE.Box3().setFromObject(carModel);
-        carModel.position.sub(box.getCenter(new THREE.Vector3()));
-        
-        carModel.traverse((node) => {
-            if (node.isMesh) {
-                originalMaterials.set(node.uuid, node.material.clone());
-            }
-        });
-        
-        scene.add(carModel);
-        console.log("Modelo carregado com sucesso!");
-    }, undefined, (error) => {
-        console.error("Erro ao carregar o modelo 3D:", error);
-    });
-
-    window.addEventListener('resize', onResize);
-    setupTabs();
-    animate(); // Inicia o ciclo de renderização
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-    if (controls) controls.update();
-    renderer.render(scene, camera);
-}
-
-function onResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-// Expõe a função de troca de cor para o HTML
-window.changeColor = (colorHex, metal = 0.9, rough = 0.2) => {
-    if (!carModel) return;
-    carModel.traverse((node) => {
-        if (node.isMesh) {
-            const name = node.name.toLowerCase();
-            const matName = node.material.name ? node.material.name.toLowerCase() : "";
-            const exclude = ["glass", "window", "pneu", "tire", "wheel", "light", "farol"];
-            const isExcluded = exclude.some(k => name.includes(k) || matName.includes(k));
-
-            if (!isExcluded && !node.material.transparent) {
-                node.material = new THREE.MeshStandardMaterial({
-                    color: new THREE.Color(colorHex),
-                    metalness: metal,
-                    roughness: rough
-                });
-            }
+    // Lista de IDs dos elementos de roda já existentes no HTML
+    const slotIds = ['slot-roda-fl', 'slot-roda-fr', 'slot-roda-bl', 'slot-roda-br'];
+    
+    slotIds.forEach(id => {
+        const wheelEl = document.getElementById(id);
+        if (wheelEl) {
+            // Apenas altera o caminho do arquivo, mantendo o objeto 3D vivo
+            wheelEl.setAttribute('src', wheelPath);
         }
     });
 };
 
-function setupTabs() {
-    document.querySelectorAll('.card-opcao').forEach(btn => {
+// 2. PINTURA (Método seguro: verifica a existência do modelo antes de pintar)
+window.changeColor = (colorHex) => {
+    // Se o modelo principal ainda não carregou, sai da função
+    if (!carViewer.model) {
+        console.warn("Aguardando modelo carregar para aplicar a cor...");
+        return;
+    }
+    
+    // Converte HEX para RGB (0 a 1)
+    const r = parseInt(colorHex.slice(1, 3), 16) / 255;
+    const g = parseInt(colorHex.slice(3, 5), 16) / 255;
+    const b = parseInt(colorHex.slice(5, 7), 16) / 255;
+    
+    // Aplica a cor apenas nos materiais que contêm "carro_" no nome
+    carViewer.model.materials.forEach((material) => {
+        if (material.name.toLowerCase().includes('carro_')) {
+            material.pbrMetallicRoughness.setBaseColorFactor([r, g, b, 1]);
+        }
+    });
+};
+
+// 3. INICIALIZAÇÃO E EVENTOS
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Listener para os botões de troca de roda
+    document.querySelectorAll('.btn-item[data-model]').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.card-opcao, .aba-conteudo').forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-            const target = document.getElementById(`content-${btn.dataset.target}`);
-            if (target) target.classList.add('active');
+            const modelFile = btn.getAttribute('data-model');
+            window.changeWheel(modelFile);
         });
     });
-}
+    
+    // Listener para o seletor de cor
+    const colorPicker = document.getElementById('colorPicker');
+    if (colorPicker) {
+        colorPicker.addEventListener('input', (e) => {
+            window.changeColor(e.target.value);
+        });
+    }
 
-
-
-
-init();
+    console.log("✅ APEX Render Engine carregada com sucesso.");
+});

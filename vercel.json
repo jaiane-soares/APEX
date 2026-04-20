@@ -1,17 +1,15 @@
 {
-  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/assets/models/:file*",
+      "destination": "/assets/models/:file*"
+    }
+  ],
   "headers": [
     {
-      "source": "/(.*).glb",
+      "source": "/assets/models/(.*).glb",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "model/gltf-binary"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
+        { "key": "Content-Type", "value": "model/gltf-binary" }
       ]
     }
   ]

@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/components/components.css">
     <link rel="stylesheet" href="../css/pages/personalizar.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-        "three/examples/jsm/loaders/GLTFLoader.js": "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
-        "three/examples/jsm/controls/OrbitControls.js": "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js"
-      }
-    }
-    </script>
+    
 </head>
 <body>
     <div id="header-placeholder"></div>
+  <div class="visualizador-container" style="position: relative; width: 100%; height: 100vh;">
+    <model-viewer 
+        id="car-viewer"
+        src="../assets/models/KadettAntigoo.glb" 
+        camera-controls 
+        auto-rotate 
+        shadow-intensity="1"
+        style="width: 100%; height: 100%;">
+    </model-viewer>
     
-    <canvas id="canvas-3d"></canvas>
-
+    <model-viewer id="slot-roda-fl" class="roda-fixa" src="../assets/models/rodaGSI.glb"></model-viewer>
+    <model-viewer id="slot-roda-fr" class="roda-fixa" src="../assets/models/rodaGSI.glb"></model-viewer>
+    <model-viewer id="slot-roda-bl" class="roda-fixa" src="../assets/models/rodaGSI.glb"></model-viewer>
+    <model-viewer id="slot-roda-br" class="roda-fixa" src="../assets/models/rodaGSI.glb"></model-viewer>
+</div>
+        
+    
     <main id="ui-interface">
         <aside id="menu-categorias">
             <nav id="grid-opcoes">
@@ -39,40 +46,57 @@
         </aside>
 
         <aside id="menu-selecao">
-            <div id="container-itens">
-                
-                <div class="aba-conteudo active" id="content-cores">
-                    <h2 id="titulo-selecao">Pintura</h2>
-                    <div class="grid-selecao">
-                        <div class="cor-item" style="background: #191B23;" onclick="resetCarColor()" title="Original"></div>
-                        <div class="cor-item" style="background: #7300FF;" onclick="changeColor('#7300FF', 0.9, 0.1)" title="Roxo Metálico"></div>
-                        <div class="cor-item" style="background: #00FF41;" onclick="changeColor('#00FF41', 0.8, 0.2)" title="Verde Neon"></div>
-                        <div class="cor-item" style="background: #FF0000;" onclick="changeColor('#FF0000', 0.9, 0.1)" title="Vermelho Racing"></div>
-                    </div>
-                </div>
-
-                <div class="aba-conteudo" id="content-rodas">
-                    <h2 id="titulo-selecao">Rodas</h2>
-                    <div class="grid-selecao-botoes">
-                        <button class="btn-item" onclick="changeWheel('RodaBBS.glb')">BBS Motorsport</button>
-                        <button class="btn-item" onclick="changeWheel('RodaTE37.glb')">Volk TE37</button>
-                        <button class="btn-item" onclick="changeWheel('rodaGSIAtualizada.glb')">GSI Original</button>
-                    </div>
-                </div>
-
-                <div class="aba-conteudo" id="content-carroceria">
-                    <h2 id="titulo-selecao">Aero</h2>
-                    <div class="grid-selecao-botoes">
-                        <button class="btn-item" onclick="togglePart('aerofolio.glb')">Aerofólio Esportivo</button>
-                        <button class="btn-item" onclick="changePart('frontal', 'parachoqueFrontalNovo.glb')">Pá-choque Track</button>
-                    </div>
-                </div>
-
+    <div id="container-itens">
+        
+        <div class="aba-conteudo active" id="content-cores">
+            <h2 id="titulo-selecao">Pintura</h2>
+            <div class="grid-selecao">
+                <label for="colorPicker" class="color-picker-label">
+                    Escolha uma cor personalizada:
+                    <input type="color" id="colorPicker" value="#071c83">
+                </label>
             </div>
-        </aside>
+        </div>
+
+       <div class="aba-conteudo" id="content-rodas">
+    <h2 id="titulo-selecao">Rodas</h2>
+    <div class="grid-selecao-botoes">
+        <button class="btn-item" data-model="rodaGSI.glb">GSI Original</button>
+        <button class="btn-item" data-model="KadettAntigoo.glb">BBS Motorsport</button>
+    </div>
+</div>
+
+        <div class="aba-conteudo" id="content-carroceria">
+            <h2 id="titulo-selecao">Aero</h2>
+            <div class="grid-selecao-botoes">
+                <button class="btn-item" data-part="aerofolio.glb">Aerofólio Esportivo</button>
+            </div>
+        </div>
+
+    </div>
+</aside>
+        
+    
     </main>
 
-    <script src="../js/main.js"></script>
+   <script src="../js/main.js"></script>
     <script type="module" src="../js/car-render.js"></script>
+    
+    <script>
+        const cards = document.querySelectorAll('.card-opcao');
+        const abas = document.querySelectorAll('.aba-conteudo');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                cards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                abas.forEach(aba => aba.classList.remove('active'));
+                const target = card.getAttribute('data-target');
+                document.getElementById(`content-${target}`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
