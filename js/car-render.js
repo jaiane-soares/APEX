@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCarView(index) {
         let newIndex = ((index - 1 + 36) % 36) + 1;
-        // O caminho aponta dinamicamente para a pasta da cor selecionada
+      
         carImage.src = `../assets/models/${pastaCor}/${formatNumber(newIndex)}.png`;
         currentRotation = newIndex;
     }
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lógica para trocar a cor ao clicar
     document.querySelectorAll('.cor-item').forEach(item => {
         item.addEventListener('click', () => {
-            // Pega o nome da pasta definido no data-cor do HTML
+            
             pastaCor = item.getAttribute('data-cor');
-            updateCarView(currentRotation); // Força a atualização da imagem
+            updateCarView(currentRotation); 
         });
     });
 
