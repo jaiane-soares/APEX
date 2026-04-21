@@ -89,10 +89,14 @@ body {
 }
 
 /* Garante que o destaque do título principal use a Unbounded */
+/* Localize a regra do Hero Content e adicione este seletor específico */
 .hero-content h1 span {
-  font-family: 'Unbounded', sans-serif;
-  font-weight: 900;
-  color: #7CFF00; /* Mantém o verde neon */
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    color: #7CFF00;
+    /* Faz o span herdar o tamanho do H1 (56px) em vez de usar os 20px globais */
+    font-size: inherit !important; 
+    line-height: 1.1;
 }
 
 .hero-content span {
@@ -108,14 +112,17 @@ body {
 }
 
 /* DESCRIÇÃO */
+/* Restaura o tamanho original apenas para a descrição do hero */
 .hero-description {
-  position: absolute;
-  top: 700px;
-  right: 170px;
-  max-width: 420px;
-  font-size: 14px;
-  color: #ccc;
-  text-align: right;
+    font-size: 14px !important;
+    color: #ccc;
+    line-height: 1.4;
+    max-width: 420px;
+    /* Mantendo o alinhamento original */
+    position: absolute;
+    bottom: 0px;
+    right: 170px;
+    text-align: right;
 }
 
 /* CONTAINER PRINCIPAL */
