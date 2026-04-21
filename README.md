@@ -1,36 +1,42 @@
-#  Projeto APEX
+# Projeto APEX 🏎️
+**Plataforma de Tunagem e Personalização Automotiva**
 
-O **Projeto APEX** é uma plataforma de tunagem e personalização automotiva. Focada em modularidade e fidelidade técnica, a aplicação permite que usuários configurem desde a estética aerodinâmica até o mapeamento de performance do motor, garantindo uma experiência imersiva de workshop digital.
-
----
-
-## O projeto
-O APEX resolve a fragmentação de ferramentas de personalização, unindo um **Configurador 3D/Visual** com um **Simulador de Performance realista**.
+O **Projeto APEX** é uma solução avançada para personalização automotiva, focada em modularidade técnica e fidelidade de performance. A aplicação permite que utilizadores configurem desde a estética aerodinâmica até ao mapeamento de motor, proporcionando uma experiência de oficina digital imersiva.
 
 ---
 
-## Funcionalidades principais
-* **Oficina Modular:** Sistema de troca de peças (Motor, Suspensão, Transmissão) com dependências lógicas.
-* **Apex Tuner Logic:** Algoritmo que calcula o ganho de cavalaria ($HP$) e torque ($Nm$) baseado na compatibilidade das peças.
-* **Visual Customizer:** Alteração de cores, kits aerodinâmicos e rodas com persistência de estado.
-* **Marketplace Dinâmico:** Sistema de preços que oscila conforme a raridade e demanda das peças de performance.
-* **Relatório de Performance:** Gráficos comparativos de aceleração ($0-100 km/h$) e velocidade final.
+## O Projeto
+O APEX elimina a fragmentação de ferramentas de customização, integrando dois pilares fundamentais:
+* **Configurador Visual:** Interface de modificação estética em alta fidelidade.
+* **Simulador de Performance:** Sistema de cálculo de desempenho baseado em componentes mecânicos.
+
+##  Funcionalidades Principais
+* **Oficina Modular:** Sistema inteligente de troca de peças (Motor, Suspensão, Transmissão) com verificação de dependências lógicas.
+* **Visual Customizer:** Alteração de cores, kits aerodinâmicos e rodas com sistema de persistência de estado.
 
 ---
 
-## Stack técnica
-Para suportar o processamento de física e renderização sem gargalos, utilizamos uma arquitetura escalável:
-* **Frontend:** React.js com Three.js (para visualização 3D) e Tailwind CSS.
-* **Backend:** Node.js com Express (API RESTful segura).
-* **Cálculo de Física:** Engine customizada em JavaScript (ES6+) para simulação de torque.
-* **Banco de Dados:** PostgreSQL para catálogo de peças e configurações de usuários.
-* **Segurança:** Sanitização de inputs e JWT para sessões de usuário.
+> [!IMPORTANT] 
+>
+>
+>O desenvolvimento do APEX exigiu adaptações estratégicas para superar limites técnicos de performance e renderização:
+>
+> **Limitações do 3D em JS Puro:** A implementação inicial buscava renderização 3D nativa. Contudo, a manipulação dinâmica de elementos como rodas e acessórios em JavaScript puro apresentou gargalos críticos de performance e instabilidade na renderização.
+>
+> **Transição para Model Review:** Durante a fase de *model review*, constatamos que a complexidade de manipular peças específicas no DOM/Canvas com JS puro continuava a escalar de forma ineficiente, comprometendo a experiência do utilizador.
+>
+> **Solução via 360°:** Para assegurar uma experiência fluida e visualmente rica, migramos a estratégia: utilizamos renderizações em 360° geradas diretamente no **Blender**. Isso eliminou os erros de renderização e elevou o nível do acabamento visual.
+>
+> **Estado da IA:** A funcionalidade de inteligência artificial para identificação e adaptação automática de novos veículos ainda está em *roadmap*. Atualmente, o sistema suporta exclusivamente o modelo **Chevrolet Kadett**.
 
 ---
 
-## Arquitetura do projeto
-Estrutura pensada para expansão de novos modelos de veículos e fabricantes:
+##  Stack Técnica
+Para garantir escalabilidade e suporte ao processamento, utilizamos:
+* **Frontend:** JavaScript (Vanilla), CSS3 e HTML5.
 
+##  Arquitetura do Projeto
+Estrutura modular desenhada para a futura expansão de novos modelos de veículos, fabricantes e integração de sistemas de performance, focada na facilidade de implementação de novos *assets* visuais renderizados.
 ```text
 / (raiz do projeto)
 ├── 📁 .vscode/              # Configurações do editor
@@ -39,10 +45,7 @@ Estrutura pensada para expansão de novos modelos de veículos e fabricantes:
 │   ├── 📁 images/          # Logos e ícones do sistema
 │   └── 📁 models/          # Onde você vai salvar o 'kadett_rebaixado.glb'
 ├── 📁 css/                 # Estilização (Flexbox/Grid para o layout da câmera e 3D)
-├── 📁 data/                # JSONs com dados dos carros (ex: specs técnica do Kadett)
 ├── 📁 js/                  # Toda a inteligência do site
-│   ├── 📄 camera.js        # Lógica de acesso à webcam/celular
-│   ├── 📄 vision-engine.js # Lógica da Visão Computacional (Reconhecer o modelo)
 │   ├── 📄 car-render.js    # Script do Three.js para carregar e girar o Kadett
 │   └── 📄 main.js          # Orquestrador (une a IA com o visualizador 3D)
 ├── 📁 pages/               # Telas do sistema
