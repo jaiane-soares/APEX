@@ -1,49 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carImage = document.getElementById('car-image-360');
     
-    if (!carImage) {
-        console.error("Elemento 'car-image-360' não encontrado no HTML!");
-        return;
-    }
+    // Estado inicial: começa na pasta 'prata' (ajuste conforme seu padrão)
+    let currentRotation = 1;
+    let pastaCor = "prata"; 
 
-    const totalImages = 36;
-    let currentRotation = 1; // Começa na 0001.png
-
-    // Função para formatar o número (ex: 1 vira "0001")
     function formatNumber(num) {
         return num.toString().padStart(4, '0');
     }
 
     function updateCarView(index) {
-        // Lógica circular (1 a 36)
-        let newIndex = ((index - 1 + totalImages) % totalImages) + 1;
-        
-        carImage.src = `../assets/models/render_360/${formatNumber(newIndex)}.png`;
+        let newIndex = ((index - 1 + 36) % 36) + 1;
+        // O caminho aponta dinamicamente para a pasta da cor selecionada
+        carImage.src = `../assets/models/${pastaCor}/${formatNumber(newIndex)}.png`;
         currentRotation = newIndex;
     }
 
+    // Lógica para trocar a cor ao clicar
+    document.querySelectorAll('.cor-item').forEach(item => {
+        item.addEventListener('click', () => {
+            // Pega o nome da pasta definido no data-cor do HTML
+            pastaCor = item.getAttribute('data-cor');
+            updateCarView(currentRotation); // Força a atualização da imagem
+        });
+    });
+
+    // Lógica de arrasto (mantida)
     let isDragging = false;
     let startX;
-
-    carImage.addEventListener('mousedown', (e) => {
+    document.getElementById('car-viewer-container').addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.clientX;
     });
 
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        
         const deltaX = e.clientX - startX;
-        
-        // Sensibilidade: muda a imagem a cada 20px de movimento
         if (Math.abs(deltaX) > 20) {
-            const direction = deltaX > 0 ? -1 : 1;
-            updateCarView(currentRotation + direction);
+            updateCarView(currentRotation + (deltaX > 0 ? -1 : 1));
             startX = e.clientX;
         }
     });
 
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+    window.addEventListener('mouseup', () => isDragging = false);
 });

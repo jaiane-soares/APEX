@@ -22,30 +22,18 @@
         <aside id="menu-categorias">
             <nav id="grid-opcoes">
                 <div class="card-opcao active" data-target="cores"><span class="label">Cores</span></div>
-                <div class="card-opcao" data-target="rodas"><span class="label">Rodas</span></div>
-                <div class="card-opcao" data-target="carroceria"><span class="label">Carroceria</span></div>
+               
             </nav>
         </aside>
 
-        <aside id="menu-selecao">
-            <div id="container-itens">
-                <div class="aba-conteudo active" id="content-cores">
-                    <h2 id="titulo-selecao">Pintura</h2>
-                    <input type="color" id="colorPicker" value="#071c83">
-                </div>
-
-                            <div class="aba-conteudo" id="content-rodas">
-                    <h2 id="titulo-selecao">Rodas</h2>
-                    <button class="btn-item" onclick="changeWheel('roda_GSI')">GSI Original</button>
-                    <button class="btn-item" onclick="changeWheel('rodas_termac')">Rodas Padrão</button>
-                </div>
-
-                <div class="aba-conteudo" id="content-carroceria">
-                    <h2 id="titulo-selecao">Aero</h2>
-                    <button class="btn-item" data-part="aerofolio.glb">Aerofólio Esportivo</button>
-                </div>
-            </div>
-        </aside>
+       <div class="aba-conteudo active" id="content-cores">
+    <h2 id="titulo-selecao">Pintura</h2>
+    <div class="grid-selecao">
+        <div class="cor-item" data-cor="prata" style="background: #c0c0c0;"></div>
+        <div class="cor-item" data-cor="azul" style="background: #071c83;"></div>
+        <div class="cor-item" data-cor="vermelho" style="background: #ff0000;"></div>
+    </div>
+</div>
     </main>
 
     <script src="../js/main.js"></script>
