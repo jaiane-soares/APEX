@@ -56,3 +56,19 @@ Estrutura modular desenhada para a futura expansão de novos modelos de veículo
 ├── 📄 index.html           # Landing Page (Página de entrada)
 ├── 📄 package.json          # Dependências (TensorFlow.js, Three.js)
 └── 📄 README.md             # Documentação do projeto
+````
+---
+
+## 📸 Galeria do Projeto
+
+Confira abaixo as interfaces desenvolvidas para a plataforma:
+
+### Interface de Personalização (APEX Configurator)
+![Tela de Personalização](assets/tela-personalizacao.png)
+*Interface intuitiva para tunagem estética e mecânica do seu veículo.*
+
+### Mapa de Eventos
+![Mapa de Eventos](assets/mapa-eventos.png)
+*Mapa interativo para localização de encontros e track days em tempo real.*
+
+---
