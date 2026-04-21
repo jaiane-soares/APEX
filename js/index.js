@@ -75,25 +75,38 @@ async function loadHeader() {
 loadHeader();
 // js/index.js
 
+// js/index.js
+
+// js/index.js
+
 async function carregarComponentes() {
+    // AJUSTE AQUI: Se os arquivos estão na pasta 'components', mude para 'components/'
+    // Se estiverem em outra pasta, coloque o nome dela aqui.
+    const path = 'components/'; 
+
     try {
-        // Carrega o Header
-        const headerRes = await fetch('header.html');
+        // Carregar Header
+        const headerRes = await fetch(`${path}header.html`);
         if (headerRes.ok) {
             const headerHtml = await headerRes.text();
             document.getElementById('header-placeholder').innerHTML = headerHtml;
+            console.log("Header carregado com sucesso!");
+        } else {
+            console.error("Não achei o Header em:", `${path}header.html`);
         }
 
-        // Carrega o Footer
-        const footerRes = await fetch('footer.html');
+        // Carregar Footer
+        const footerRes = await fetch(`${path}footer.html`);
         if (footerRes.ok) {
             const footerHtml = await footerRes.text();
             document.getElementById('footer-placeholder').innerHTML = footerHtml;
+            console.log("Footer carregado com sucesso!");
+        } else {
+            console.error("Não achei o Footer em:", `${path}footer.html`);
         }
 
-        console.log("Componentes carregados!");
     } catch (error) {
-        console.error("Erro ao carregar componentes:", error);
+        console.error("Erro na requisição:", error);
     }
 }
 

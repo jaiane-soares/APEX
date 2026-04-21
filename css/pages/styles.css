@@ -3,17 +3,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* Todas as letras do site serão Roboto por padrão */
+  /* Define Roboto como padrão e fixa o tamanho em 20px */
   font-family: 'Roboto', sans-serif;
-  font-weight: 500; 
+  font-weight: 500;
+  font-size: 20px; 
 }
 
-/* 2. CONFIGURAÇÃO DE TÍTULOS (UNBOUNDED) */
+/* Garante que parágrafos, links e spans que não forem Unbounded sigam os 20px */
+p, span, a, li, button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px !important; 
+}
+
+/* 2. CONFIGURAÇÃO DE TÍTULOS (UNBOUNDED) - Mantemos tamanhos maiores para hierarquia */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Unbounded', sans-serif;
-  font-weight: 900; /* Peso carregado no seu link do Google Fonts */
-  text-transform: uppercase; /* Opcional: mantém o padrão visual da Apex */
+  font-weight: 900;
+  text-transform: uppercase;
 }
+
+/* Seletor específico para manter os títulos em tamanhos grandes */
+h1 { font-size: 56px !important; }
+h2 { font-size: 36px !important; }
+h3 { font-size: 24px !important; }
+h4 { font-size: 20px !important; }
 
 body {
   background-color: #00020B;
@@ -97,13 +110,14 @@ body {
 /* DESCRIÇÃO */
 .hero-description {
   position: absolute;
-  bottom: 100px;
+  top: 700px;
   right: 170px;
   max-width: 420px;
   font-size: 14px;
   color: #ccc;
   text-align: right;
 }
+
 /* CONTAINER PRINCIPAL */
 .features {
   padding: 80px 5%;
