@@ -1,21 +1,13 @@
-// 1. Inicializa o mapa
-var map = L.map('map', {
-    scrollWheelZoom: true,
-    dragging: true
-}).setView([-23.5505, -46.6333], 12);
+// mapa.js
+var map = L.map('map').setView([-23.5505, -46.6333], 12);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; CartoDB'
 }).addTo(map);
 
-//  Define o ícone verde
-const iconeVerde = L.divIcon({
-    className: 'marker-verde',
-    iconSize: [20, 20],
-    iconAnchor: [10, 10]
-});
-
-    const eventos = [
+const iconeVerde = L.divIcon({ className: 'marker-verde', iconSize: [20, 20], iconAnchor: [10, 10] });
+const listaEventos = document.getElementById('lista-eventos');
+ const eventos = [
     { id: 1, nome: "Encontro de Opala", local: "Autódromo de Interlagos, SP", lat: -23.7037, lng: -46.6997, data: "25/04/2026" },
     { id: 2, nome: "Track Day APEX", local: "Kartódromo Granja Viana, SP", lat: -23.5930, lng: -46.8280, data: "02/05/2026" },
     { id: 3, nome: "Clube do Fusca SP", local: "Parque Ibirapuera, SP", lat: -23.5874, lng: -46.6576, data: "10/05/2026" },
@@ -70,45 +62,25 @@ const iconeVerde = L.divIcon({
 ];
 
 
-
-eventos.forEach(evento => {
-    
-    const marker = L.marker([evento.lat, evento.lng], { icon: iconeVerde }).addTo(map);
-
-    L
-    const conteudoPopup = `
-        <div style="text-align: center; color: #00020b;">
-            <h3 style="margin: 5px 0;">${evento.nome}</h3>
-            <p style="margin: 2px 0; font-size: 0.9em;">📅 ${evento.data}</p>
-            <p style="margin: 2px 0; font-weight: bold;">📍 ${evento.local}</p>
-        </div>
-    `;
-
-    marker.bindPopup(conteudoPopup, {
-        closeButton: true,
-        className: 'custom-popup' 
-    });
-
-   
-});
-
-
-let marcadores = [];
-
-
-function filtrarEventos(categoria) {
-    
-    map.eachLayer((layer) => {
-        if (layer instanceof L.Marker) {
-            map.removeLayer(layer);
-        }
-    });
-
-    // Filtra e adiciona apenas os necessários
-    eventos.forEach(evento => {
-        if (categoria === 'todos' || evento.nome.includes(categoria)) {
-            const marker = L.marker([evento.lat, evento.lng], { icon: iconeVerde }).addTo(map);
-            marker.bindPopup(`<b>${evento.nome}</b>`);
-        }
+function renderizarLista(lista) {
+    listaEventos.innerHTML = '';
+    lista.forEach(evento => {
+        const div = document.createElement('div');
+        div.className = 'card-evento';
+        div.innerHTML = `<strong>${evento.nome}</strong><br><small>${evento.data} - ${evento.local}</small>`;
+        
+        div.onclick = () => {
+            map.flyTo([evento.lat, evento.lng], 15);
+        };
+        listaEventos.appendChild(div);
     });
 }
+
+// Inicializa marcadores
+eventos.forEach(evento => {
+    L.marker([evento.lat, evento.lng], { icon: iconeVerde })
+     .addTo(map)
+     .bindPopup(`<h3>${evento.nome}</h3>`);
+});
+
+renderizarLista(eventos);
