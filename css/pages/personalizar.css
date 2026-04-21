@@ -158,3 +158,21 @@ slot model-viewer {
         transform: scale(1) translateY(0);
     }
 }
+
+#car-viewer-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    background-color: #0d0d0d;
+    z-index: 1;
+}
+
+#modelo-carro {
+    width: 80%;
+    height: 80%;
+}
