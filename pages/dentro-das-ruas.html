@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Nas ruas </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap" />
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/components/components.css">
     <link rel="stylesheet" href="../css/pages/dentro-das-ruas.css">
     <link rel="stylesheet" href="../css/pages/transition.css">
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js" defer></script>
 </head>
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -50,8 +52,21 @@
         </section>
     </main>
     <div id="modal" class="modal">
-  <span class="fechar">&times;</span>
-  <img class="modal-conteudo" id="img-ampliada">
+        <span class="fechar">&times;</span>
+        <img class="modal-conteudo" id="img-ampliada">
+    </div>
+ <div id="transition-layer" class="transition-layer">
+    <div class="strips-container">
+        <span class="strip"></span>
+        <span class="strip"></span>
+        <span class="strip"></span>
+        <span class="strip"></span>
+        <span class="strip"></span>
+    </div>
+    <div class="transition-content">
+        <img src="../assets/icons/APEX.png" alt="Logo" class="trans-logo">
+        <h1 id="trans-page-name">GALERIA</h1>
+    </div>
 </div>
     <div id="footer-placeholder"></div>
     <script src="../js/dentro-das-ruas.js"></script>
