@@ -64,11 +64,13 @@ Estrutura modular desenhada para a futura expansão de novos modelos de veículo
 Confira abaixo as interfaces desenvolvidas para a plataforma:
 
 ### Interface de Personalização (APEX Configurator)
-![Tela de Personalização](assets/tela-personalizacao.png)
+![Tela de Personalização](kadett1.png)
+
+![Tela de Personalização](kadett2.png)
 *Interface intuitiva para tunagem estética e mecânica do seu veículo.*
 
 ### Mapa de Eventos
-![Mapa de Eventos](assets/mapa-eventos.png)
+![Mapa de Eventos](mapaEventos.png)
 *Mapa interativo para localização de encontros e track days em tempo real.*
 
 ---
