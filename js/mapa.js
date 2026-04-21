@@ -15,7 +15,6 @@ const iconeVerde = L.divIcon({
     iconAnchor: [10, 10]
 });
 
-
     const eventos = [
     { id: 1, nome: "Encontro de Opala", local: "Autódromo de Interlagos, SP", lat: -23.7037, lng: -46.6997, data: "25/04/2026" },
     { id: 2, nome: "Track Day APEX", local: "Kartódromo Granja Viana, SP", lat: -23.5930, lng: -46.8280, data: "02/05/2026" },
