@@ -1,200 +1,313 @@
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .cadastre-se {
-  	width: 100%;
-  	height: 950px;
-  	position: relative;
-  	background-color: #00020b;
-  	overflow: hidden;
-  	text-align: left;
-  	font-size: 18px;
-  	color: #a4a4a4;
-  	font-family: Roboto;
+    width: 100%;
+    height: 1120px;
+    position: relative;
+    background-color: #00020b;
+    overflow: hidden;
+    text-align: left;
+    font-size: 18px;
+    color: #a4a4a4;
+    font-family: Roboto;
 }
+
 .header {
-  width: 100%;
-  height: 70px;
-  background-color: #191b23;
-  border-radius: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0 32px;
-  box-sizing: border-box;
-  font-size: 18px;
-  color: #f2f2f2;
-  font-family: Roboto;
+    width: 100%;
+    height: 70px;
+    background-color: #191b23;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 32px;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #f2f2f2;
+    font-family: Roboto;
 }
+
 .cadastre-se-child {
-  	position: absolute;
-  	top: 206px;
-  	left: 87px;
-  	border-radius: 16px 0px 0px 16px;
-  	background-color: #191b23;
-  	width: 535px;
-  	height: 601px;
-  	flex-shrink: 0;
+    position: absolute;
+    top: 206px;
+    left: 87px;
+    border-radius: 16px 0px 0px 16px;
+    background-color: #191b23;
+    width: 535px;
+    height: 870px;
+    flex-shrink: 0;
 }
+
 .bem-vindo {
-  	position: absolute;
-  	top: 332px;
-  	left: 209px;
-  	font-size: 40px;
-  	letter-spacing: -0.02em;
-  	text-transform: uppercase;
-  	font-weight: 900;
-  	font-family: Unbounded;
-  	color: #fff;
-  	flex-shrink: 0;
+    position: absolute;
+    top: 380px;
+    left: 209px;
+    font-size: 40px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: Unbounded;
+    color: #fff;
+    flex-shrink: 0;
 }
+
 .cadastre-se-item {
-  	position: absolute;
-  	top: 206px;
-  	left: 622px;
-  	border-radius: 0px 16px 16px 0px;
-  	background-color: #f2f2f2;
-  	width: 716px;
-  	height: 601px;
-  	flex-shrink: 0;
+    position: absolute;
+    top: 206px;
+    left: 622px;
+    border-radius: 0px 16px 16px 0px;
+    background-color: #f2f2f2;
+    width: 716px;
+    height: 870px;
+    flex-shrink: 0;
 }
+
 .cadastro {
-  	position: absolute;
-  	top: 275px;
-  	left: 842px;
-  	font-size: 40px;
-  	letter-spacing: -0.02em;
-  	text-transform: uppercase;
-  	font-weight: 900;
-  	font-family: Unbounded;
-  	color: #000;
-  	flex-shrink: 0;
+    position: absolute;
+    top: 275px;
+    left: 890px;
+    font-size: 40px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: Unbounded;
+    color: #000;
+    flex-shrink: 0;
 }
+
 .acesse-sua-conta {
-  	position: absolute;
-  	top: 406px;
-  	left: 187px;
-  	font-size: 24px;
-  	letter-spacing: -0.02em;
-  	font-weight: 500;
-  	color: #fff;
-  	text-align: center;
-  	flex-shrink: 0;
+    position: absolute;
+    top: 450px;
+    left: 187px;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    flex-shrink: 0;
 }
+
 .comear3 {
-  	position: absolute;
-  	top: 636px;
-  	left: 248px;
-  	border-radius: 8px;
-  	background-color: #8cff00;
-  	width: 214px;
-  	height: 50px;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 8px 16px;
-  	box-sizing: border-box;
-  	flex-shrink: 0;
-  	font-size: 28px;
-  	color: #0b0e11;
+    position: absolute;
+    top: 636px;
+    left: 248px;
+    border-radius: 8px;
+    background-color: #8cff00;
+    width: 214px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    font-size: 28px;
+    color: #0b0e11;
 }
+
+/* --- CAMPOS ORIGINAIS --- */
+
 .rectangle-parent {
-  	position: absolute;
-  	top: 447px;
-  	left: 710px;
-  	width: 540px;
-  	height: 84px;
-  	flex-shrink: 0;
-  	font-size: 20px;
+    position: absolute;
+    top: 447px;
+    left: 710px;
+    width: 540px;
+    height: 84px;
+    flex-shrink: 0;
+    font-size: 20px;
 }
+
 .group-child {
-  	position: absolute;
-  	top: 24px;
-  	left: 0px;
-  	border-radius: 16px;
-  	border: 1px solid #000;
-  	box-sizing: border-box;
-  	width: 540px;
-  	height: 60px;
+    position: absolute;
+    top: 24px;
+    left: 0px;
+    border-radius: 16px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 540px;
+    height: 60px;
 }
-.gmailcom {
-  	position: absolute;
-  	top: 43px;
-  	left: 27px;
-  	letter-spacing: -0.02em;
-  	text-transform: uppercase;
-  	font-weight: 500;
-}
+
 .email {
-  	position: absolute;
-  	top: 0px;
-  	left: 11px;
-  	letter-spacing: -0.02em;
-  	font-weight: 500;
-  	color: #5b5b5b;
+    position: absolute;
+    top: 0px;
+    left: 11px;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: #5b5b5b;
 }
 
 .rectangle-group {
-  	position: absolute;
-  	top: 345px;
-  	left: 710px;
-  	width: 540px;
-  	height: 84px;
-  	flex-shrink: 0;
-  	font-size: 20px;
+    position: absolute;
+    top: 345px;
+    left: 710px;
+    width: 540px;
+    height: 84px;
+    flex-shrink: 0;
+    font-size: 20px;
 }
+
 .rectangle-container {
-  	position: absolute;
-  	top: 550px;
-  	left: 710px;
-  	width: 540px;
-  	height: 83px;
-  	flex-shrink: 0;
-  	font-size: 20px;
+    position: absolute;
+    top: 550px;
+    left: 710px;
+    width: 540px;
+    height: 83px;
+    flex-shrink: 0;
+    font-size: 20px;
 }
+
 .group-inner {
-  	position: absolute;
-  	top: 23px;
-  	left: 0px;
-  	border-radius: 16px;
-  	border: 1px solid #000;
-  	box-sizing: border-box;
-  	width: 540px;
-  	height: 60px;
+    position: absolute;
+    top: 23px;
+    left: 0px;
+    border-radius: 16px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 540px;
+    height: 60px;
 }
-.senha {
-  	position: absolute;
-  	top: 42px;
-  	left: 27px;
-  	letter-spacing: -0.02em;
-  	text-transform: uppercase;
-  	font-weight: 500;
+
+/* --- NOVOS CAMPOS --- */
+
+.rectangle-carro {
+    position: absolute;
+    top: 643px;
+    left: 710px;
+    width: 540px;
+    height: 84px;
+    flex-shrink: 0;
+    font-size: 20px;
 }
+
+.rectangle-localizacao {
+    position: absolute;
+    top: 737px;
+    left: 710px;
+    width: 540px;
+    height: 84px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.rectangle-bio {
+    position: absolute;
+    top: 831px;
+    left: 710px;
+    width: 540px;
+    height: 84px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+/* --- TERMOS DE USO --- */
+
+/* Posicionado logo abaixo da bio: 831 + 84 + 6 = 921 */
+.termos-wrapper {
+    position: absolute;
+    top: 921px;
+    left: 710px;
+    width: 540px;
+    height: 40px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+}
+
+.termos-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Esconde o checkbox nativo */
+.termos-label input[type="checkbox"] {
+    display: none;
+}
+
+/* Checkbox estilizado no tema da página */
+.termos-custom-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.termos-label input[type="checkbox"]:checked + .termos-custom-check {
+    background: #8cff00;
+    border-color: #8cff00;
+}
+
+.termos-label input[type="checkbox"]:checked + .termos-custom-check::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 11px;
+    border: 2px solid #0b0e11;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.termos-texto {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5b5b5b;
+    letter-spacing: -0.01em;
+}
+
+.termos-link {
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.termos-link:hover {
+    color: #5a9e00;
+}
+
+/* --- BOTAO PRINCIPAL --- */
+/* Abaixo dos termos: 921 + 40 + 14 = 975 */
 .saiba-mais {
-  	position: absolute;
-  	top: 675px;
-  	left: 873px;
-  	border-radius: 8px;
-  	background-color: #8cff00;
-  	width: 214px;
-  	height: 50px;
-  	display: flex;
-  	align-items: center;
-  	justify-content: center;
-  	padding: 8px 16px;
-  	box-sizing: border-box;
-  	flex-shrink: 0;
-  	color: #191b23;
+    position: absolute;
+    top: 975px;
+    left: 873px;
+    border-radius: 8px;
+    background-color: #8cff00;
+    width: 214px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    color: #191b23;
 }
-/* Reset para os inputs não quebrarem o layout absoluto */
+#btn-main.home{
+	font-size: 25px;
+}
+
+/* --- INPUT BASE --- */
 .input-field {
     position: absolute;
-    top: 24px; /* Alinhado com a group-child */
+    top: 24px;
     left: 0px;
     width: 540px;
     height: 60px;
@@ -210,12 +323,10 @@
     box-sizing: border-box;
 }
 
-/* Ajuste específico para a caixa de senha que tem id diferente no seu código */
 .rectangle-container .input-field {
     top: 23px;
 }
 
-/* Cursor de mão nos botões */
 .saiba-mais, .comear3 {
     transition: 0.3s;
     cursor: pointer;
@@ -223,4 +334,143 @@
 
 .saiba-mais:hover, .comear3:hover {
     filter: brightness(0.8);
+}
+
+/* ============================================================
+   MODAL DE TERMOS DE USO
+   ============================================================ */
+
+.modal-overlay {
+    display: none; /* JS liga com flex */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.aberto {
+    display: flex;
+}
+
+.modal-box {
+    background: #f2f2f2;
+    border-radius: 20px;
+    width: 620px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    animation: modalEntrar 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalEntrar {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px 16px;
+    border-bottom: 2px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+.modal-titulo {
+    font-family: Unbounded;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.modal-fechar {
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.modal-fechar:hover {
+    color: #000;
+}
+
+/* Área scrollável do conteúdo */
+.modal-corpo {
+    padding: 24px 32px;
+    overflow-y: auto;
+    flex: 1;
+    color: #333;
+    font-family: Roboto;
+    font-size: 15px;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-corpo h3 {
+    font-family: Unbounded;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+}
+
+.modal-corpo ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modal-corpo strong {
+    color: #000;
+}
+
+/* Barra de scroll personalizada */
+.modal-corpo::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-corpo::-webkit-scrollbar-track {
+    background: #e8e8e8;
+    border-radius: 4px;
+}
+.modal-corpo::-webkit-scrollbar-thumb {
+    background: #8cff00;
+    border-radius: 4px;
+}
+
+.modal-footer {
+    padding: 16px 32px 24px;
+    border-top: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.modal-btn-aceitar {
+    background: #8cff00;
+    color: #0b0e11;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.2s;
+    letter-spacing: -0.01em;
+}
+
+.modal-btn-aceitar:hover {
+    filter: brightness(0.85);
 }

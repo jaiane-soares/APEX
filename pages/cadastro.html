@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../css/global.css" type="text/css">
     <link rel="stylesheet" href="/css/components/components.css" type="text/css">
 
-    <!-- defer garante que o JS só roda depois que toda a página carregou -->
     <script src="../js/cadastro.js" defer></script>
     <script src="../js/main.js" defer></script>
 </head>
@@ -25,16 +24,14 @@
         <div class="cadastre-se-item"></div>
 
         <div class="cadastro" id="form-title">Cadastro</div>
-
-        <!-- Subtítulo do lado esquerdo — tem id para poder esconder no login -->
         <div class="acesse-sua-conta" id="sub-title">Acesse sua conta agora mesmo.</div>
 
-        <!-- Botão lateral (Login / Cadastro) -->
-        <div class="comear3" onclick="showLogin()" style="cursor: pointer; z-index: 20;">
+        <!-- Botão lateral -->
+        <div class="comear3" onclick="showLogin()" style="cursor:pointer;z-index:20;">
             <div class="home" id="btn-side">Login</div>
         </div>
 
-        <!-- Campo Nome — tem id para poder esconder no login -->
+        <!-- Campo Nome -->
         <div class="rectangle-group" id="field-name">
             <div class="group-child"></div>
             <input type="text" id="reg-name" class="input-field" placeholder="NOME COMPLETO">
@@ -55,13 +52,92 @@
             <div class="email">Senha</div>
         </div>
 
-        <!-- Botão principal (Criar conta / Entrar) -->
-        <div class="saiba-mais" onclick="handleSubmit()" style="cursor: pointer; z-index: 20;">
+        <!-- Campo Nome do Carro -->
+        <div class="rectangle-carro" id="field-carro">
+            <div class="group-child"></div>
+            <input type="text" id="reg-carro" class="input-field" placeholder="EX: HONDA CIVIC 2020">
+            <div class="email">Nome do Carro</div>
+        </div>
+
+        <!-- Campo Localizacao -->
+        <div class="rectangle-localizacao" id="field-localizacao">
+            <div class="group-child"></div>
+            <input type="text" id="reg-localizacao" class="input-field" placeholder="EX: SAO PAULO, SP">
+            <div class="email">Localizacao</div>
+        </div>
+
+        <!-- Campo Bio -->
+        <div class="rectangle-bio" id="field-bio">
+            <div class="group-child"></div>
+            <input type="text" id="reg-bio" class="input-field" placeholder="EX: APAIXONADO POR CARROS DESDE PEQUENO">
+            <div class="email">Bio</div>
+        </div>
+
+        <!-- Termos de uso — so aparece no cadastro -->
+        <div class="termos-wrapper" id="field-termos">
+            <label class="termos-label">
+                <input type="checkbox" id="check-termos">
+                <span class="termos-custom-check"></span>
+                <span class="termos-texto">
+                    Li e aceito os
+                    <span class="termos-link" onclick="abrirTermos()">Termos de Uso</span>
+                </span>
+            </label>
+        </div>
+
+        <!-- Botao principal -->
+        <div class="saiba-mais" onclick="handleSubmit()" style="cursor:pointer;z-index:20;">
             <div class="home" id="btn-main">Criar conta</div>
         </div>
 
-        
     </div>
-<div id="footer-placeholder"></div>
+
+    <!-- Modal de Termos de Uso -->
+    <div class="modal-overlay" id="modal-termos" onclick="fecharTermos(event)">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-titulo">Termos de Uso</span>
+                <span class="modal-fechar" onclick="fecharTermosBtn()">&#x2715;</span>
+            </div>
+            <div class="modal-corpo">
+                <p><strong>Ultima atualizacao:</strong> Abril de 2025</p>
+
+                <h3>1. Aceitacao dos Termos</h3>
+                <p>Ao criar uma conta nesta plataforma, voce concorda integralmente com estes Termos de Uso. Se nao concordar com qualquer parte, nao utilize nossos servicos.</p>
+
+                <h3>2. Cadastro e Responsabilidade</h3>
+                <p>Voce e responsavel por manter a confidencialidade de sua senha e por todas as atividades realizadas com sua conta. Em caso de uso nao autorizado, notifique-nos imediatamente.</p>
+
+                <h3>3. Uso da Plataforma</h3>
+                <p>E permitido utilizar a plataforma para compartilhar informacoes sobre veiculos, interagir com outros usuarios e participar da comunidade. E expressamente proibido:</p>
+                <ul>
+                    <li>Publicar conteudo ofensivo, discriminatorio ou ilegal;</li>
+                    <li>Usar dados falsos no cadastro;</li>
+                    <li>Tentar acessar contas de outros usuarios;</li>
+                    <li>Realizar spam ou publicidade nao autorizada.</li>
+                </ul>
+
+                <h3>4. Conteudo do Usuario</h3>
+                <p>Ao publicar fotos, textos ou qualquer conteudo na plataforma, voce concede a nos uma licenca nao exclusiva para exibir esse conteudo dentro da plataforma. Voce mantem todos os direitos sobre seu conteudo.</p>
+
+                <h3>5. Privacidade</h3>
+                <p>Seus dados pessoais sao tratados de acordo com nossa Politica de Privacidade. Nao compartilhamos suas informacoes com terceiros sem seu consentimento, exceto quando exigido por lei.</p>
+
+                <h3>6. Suspensao e Cancelamento</h3>
+                <p>Reservamo-nos o direito de suspender ou encerrar contas que violem estes termos, sem aviso previo e sem necessidade de justificativa.</p>
+
+                <h3>7. Alteracoes nos Termos</h3>
+                <p>Podemos atualizar estes Termos a qualquer momento. Notificaremos os usuarios sobre mudancas relevantes. O uso continuado da plataforma apos as alteracoes implica aceitacao dos novos termos.</p>
+
+                <h3>8. Contato</h3>
+                <p>Em caso de duvidas, entre em contato pelo e-mail: <strong>suporte@plataforma.com</strong></p>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-btn-aceitar" onclick="aceitarTermosModal()">Aceitar e Fechar</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
 </body>
 </html>
