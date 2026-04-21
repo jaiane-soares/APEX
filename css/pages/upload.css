@@ -1,3 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #0a0a0a;
+}
+
 #upload-main {
     display: flex;
     justify-content: center;
@@ -17,6 +27,7 @@
     font-size: 2.5rem;
     text-transform: uppercase;
     margin-bottom: 10px;
+    font-family: unbounded;
 }
 
 #subtitulo-upload {
