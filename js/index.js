@@ -1,25 +1,37 @@
-const track = document.getElementById('track');
-let index = 0;
+let currentIndex = 0;
 
 function moveCarousel(direction) {
-  const cardWidth = document.querySelector('.car-card').offsetWidth + 20; // Largura + gap
-  const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-  
-  index += direction;
+    const track = document.getElementById('carouselTrack');
+    const items = document.querySelectorAll('.carousel-item');
+    
+    if (!track || items.length === 0) return;
 
-  // Limites para não rolar infinitamente no vazio
-  if (index < 0) index = 0;
-  if (index * cardWidth > maxScroll) index = Math.floor(maxScroll / cardWidth);
+    // Pega a largura exata de um item (incluindo o gap)
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.columnGap) || 20;
+    const itemWidth = items[0].offsetWidth + gap;
 
-  track.style.transform = `translateX(${-index * cardWidth}px)`;
-  
-  // Lógica simples para atualizar os "dots" (opcional)
-  updateDots(index);
-}
+    // Calcula quantos itens estão visíveis (deve resultar em 4 no desktop)
+    const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+    const visibleItems = Math.round(containerWidth / itemWidth);
+    
+    const maxIndex = items.length - visibleItems;
 
-function updateDots(currentIdx) {
-  const dots = document.querySelectorAll('.dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === currentIdx);
-  });
+    currentIndex += direction;
+
+    // Limites de navegação
+    if (currentIndex < 0) {
+        currentIndex = 0;
+    } else if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+    }
+
+    const amountToMove = currentIndex * itemWidth;
+    track.style.transform = `translateX(-${amountToMove}px)`;
+
+    // Atualiza os pontos (dots)
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+    });
 }
