@@ -6,12 +6,10 @@ function moveCarousel(direction) {
     
     if (!track || items.length === 0) return;
 
-    // Pega a largura exata de um item (incluindo o gap)
     const style = window.getComputedStyle(track);
     const gap = parseInt(style.columnGap) || 20;
     const itemWidth = items[0].offsetWidth + gap;
 
-    // Calcula quantos itens estão visíveis (deve resultar em 4 no desktop)
     const containerWidth = document.querySelector('.carousel-container').offsetWidth;
     const visibleItems = Math.round(containerWidth / itemWidth);
     
@@ -19,7 +17,6 @@ function moveCarousel(direction) {
 
     currentIndex += direction;
 
-    // Limites de navegação
     if (currentIndex < 0) {
         currentIndex = 0;
     } else if (currentIndex > maxIndex) {
@@ -29,9 +26,75 @@ function moveCarousel(direction) {
     const amountToMove = currentIndex * itemWidth;
     track.style.transform = `translateX(-${amountToMove}px)`;
 
-    // Atualiza os pontos (dots)
     const dots = document.querySelectorAll('.dot');
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
     });
 }
+
+// --- SUBSTITUA DAQUI PARA BAIXO ---
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgFull");
+    const closeModal = document.querySelector(".close-modal");
+
+    // Seleciona todas as imagens do carrossel (exceto o card de "Ver Galeria")
+    const images = document.querySelectorAll('.carousel-item:not(.gallery-link-card) img');
+
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+        });
+    });
+
+    // Fechar o modal ao clicar no X
+    if (closeModal) {
+        closeModal.onclick = () => {
+            modal.style.display = "none";
+        };
+    }
+
+    // Fechar o modal ao clicar no fundo escuro
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+async function loadHeader() {
+    try {
+        const response = await fetch('components/header.html'); // Adicione a barra se estiver na raiz
+        const data = await response.text();
+        document.getElementById('header-placeholder').innerHTML = data;
+    } catch (error) {
+        console.error('Erro ao carregar o header:', error);
+    }
+}
+loadHeader();
+// js/index.js
+
+async function carregarComponentes() {
+    try {
+        // Carrega o Header
+        const headerRes = await fetch('header.html');
+        if (headerRes.ok) {
+            const headerHtml = await headerRes.text();
+            document.getElementById('header-placeholder').innerHTML = headerHtml;
+        }
+
+        // Carrega o Footer
+        const footerRes = await fetch('footer.html');
+        if (footerRes.ok) {
+            const footerHtml = await footerRes.text();
+            document.getElementById('footer-placeholder').innerHTML = footerHtml;
+        }
+
+        console.log("Componentes carregados!");
+    } catch (error) {
+        console.error("Erro ao carregar componentes:", error);
+    }
+}
+
+carregarComponentes();

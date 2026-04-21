@@ -4,26 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apex</title>
-  <link rel="stylesheet" href="css/pages/styles.css">
+  <link rel="stylesheet" href="css/pages/styles.css"> <link rel="stylesheet" href="/css/components/components.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;600&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap" />
-  <link rel="stylesheet" href="../css/components/components.css">
 </head>
-<div vw class="enabled">
+<body>
+
+  <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
+      <div class="vw-plugin-top-wrapper"></div>
     </div>
-</div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
-
-
-<body>
+  <div id="header-placeholder"></div>
 
   <main class="hero">
     <section class="hero-container">
@@ -41,11 +37,12 @@
         <div class="line"></div>
       </article>
 
-      <p class="hero-description">
-        Use nossa visão computacional para mapear seu carro e projetar cada detalhe da sua próxima modificação.
-      </p>
+      
 
     </section>
+    <p class="hero-description">
+        Use nossa visão computacional para mapear seu carro e projetar cada detalhe da sua próxima modificação.
+      </p>
     <section class="features">
   <div class="features-header">
     <img src="assets/icons/tudo_o_que_voce_precisa.png"> <h2>TUDO O QUE VOCÊ PRECISA</h2>
@@ -103,7 +100,7 @@
       <p>Tire uma foto clara do seu carro sob boa luz, e deixe o resto conosco, transformando a imagem em um modelo 3D editável em segundos.</p>
       
       <div class="steps-actions">
-        <button class="btn-primary">Escanear meu carro <span>[ ]</span></button>
+        <button class="btn-primary">Escanear meu carro <img src="assets/icons/escanear.png"/></button>
         <button class="btn-outline">Saiba mais ›</button>
       </div>
 
@@ -144,7 +141,7 @@
       <div class="step-text">
         <h3><img src="assets/icons/baixar.png"/> BAIXAR</h3>
         <p>Gere um PDF técnico com todas as especificações. Leve para o mecânico de sua confiança.</p>
-        <button class="btn-primary full-width">Escanear meu carro <span>[ ]</span></button>
+        <button class="btn-primary full-width">Escanear meu carro <img src="assets/icons/escanear.png"/></button>
       </div>
     </div>
 
@@ -283,7 +280,12 @@
   </div>
 </section>
   </main>
+  <div id="footer-placeholder"></div>
   <script src="js/index.js"></script>
-  
+  <div id="imageModal" class="modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="imgFull">
+</div>
+
 </body>
 </html>

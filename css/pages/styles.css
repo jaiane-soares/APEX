@@ -22,11 +22,15 @@ body {
 }
 
 /* HERO */
+/* Localize e atualize estas regras no seu styles.css */
+
+
+/* Garante que o conteúdo da landing page não fique "por baixo" demais do header */
 .hero {
-  display: flex;
-  flex-direction: column; /* 👈 ISSO resolve */
-  align-items: center;
-  padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 60px 20px; /* Aumentei o padding-top de 60px para 100px */
 }
 
 .hero-container {
@@ -93,8 +97,8 @@ body {
 /* DESCRIÇÃO */
 .hero-description {
   position: absolute;
-  bottom: 20px;
-  right: 30px;
+  bottom: 100px;
+  right: 170px;
   max-width: 420px;
   font-size: 14px;
   color: #ccc;
@@ -836,4 +840,73 @@ body {
   .quote-text {
     min-height: auto;
   }
+}
+
+/* AJUSTE PARA ÍCONES DENTRO DE BOTÕES */
+.btn-primary img, 
+.btn-outline img {
+    width: 20px !important;  /* Força um tamanho menor */
+    height: 20px !important;
+    margin: 0;               /* Remove margens extras */
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Garante o alinhamento do texto com o ícone no botão */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre o texto e o ícone */
+}
+
+/* Efeito Hover nas imagens do carrossel */
+.carousel-item img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-item:hover img {
+  transform: scale(0.95); /* Diminui levemente */
+  filter: brightness(0.5); /* Escurece */
+}
+
+/* Estilo do Modal (Fundo escuro) */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo bem escuro */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagem dentro do Modal */
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(124, 255, 0, 0.2); /* Brilho verde sutil */
+  animation: zoomIn 0.3s ease;
+}
+
+/* Botão de fechar */
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
