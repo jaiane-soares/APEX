@@ -9,21 +9,22 @@
     <link rel="stylesheet" href="/css/components/components.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
 
-    
+        <div id="header-placeholder"></div>
+
+   <main>
+        <div id="map"></div>
         
-    <main>
-    <div id="map"></div>
+        <aside class="container-eventos">
+            <h2>Próximos Eventos</h2>
+            <div id="lista-eventos"></div>
+        </aside>
 
-   <aside class="container-eventos">
-    <h2>Próximos Eventos</h2>
-    
-  
-
-    <div id="lista-eventos"></div>
-</aside>
-</main>
+        <div id="card-detalhe" class="card-detalhe-oculto">
+            <button id="fechar-card" onclick="fecharCard()">×</button>
+            <div id="conteudo-detalhe"></div>
+        </div>
+    </main>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/mapa.js"></script>

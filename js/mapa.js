@@ -1,13 +1,12 @@
-// mapa.js
 var map = L.map('map').setView([-23.5505, -46.6333], 12);
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; CartoDB'
-}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; CartoDB' }).addTo(map);
 
 const iconeVerde = L.divIcon({ className: 'marker-verde', iconSize: [20, 20], iconAnchor: [10, 10] });
 const listaEventos = document.getElementById('lista-eventos');
- const eventos = [
+const cardDetalhe = document.getElementById('card-detalhe');
+const conteudoDetalhe = document.getElementById('conteudo-detalhe');
+
+const eventos = [
     { id: 1, nome: "Encontro de Opala", local: "Autódromo de Interlagos, SP", lat: -23.7037, lng: -46.6997, data: "25/04/2026" },
     { id: 2, nome: "Track Day APEX", local: "Kartódromo Granja Viana, SP", lat: -23.5930, lng: -46.8280, data: "02/05/2026" },
     { id: 3, nome: "Clube do Fusca SP", local: "Parque Ibirapuera, SP", lat: -23.5874, lng: -46.6576, data: "10/05/2026" },
@@ -61,26 +60,34 @@ const listaEventos = document.getElementById('lista-eventos');
     
 ];
 
+function abrirCard(evento) {
+    conteudoDetalhe.innerHTML = `<h3>${evento.nome}</h3><p><strong>Data:</strong> ${evento.data}</p><p><strong>Local:</strong> ${evento.local}</p>`;
+    cardDetalhe.style.display = 'block';
+}
 
-function renderizarLista(lista) {
-    listaEventos.innerHTML = '';
-    lista.forEach(evento => {
+function fecharCard() { cardDetalhe.style.display = 'none'; }
+
+function destacarCard(id) {
+    document.querySelectorAll('.card-evento').forEach(c => c.style.border = 'none');
+    const el = document.getElementById(`evento-${id}`);
+    if (el) { el.style.border = '1px solid #8cff00'; el.scrollIntoView({ behavior: 'smooth' }); }
+}
+
+function renderizarLista() {
+    eventos.forEach(evento => {
         const div = document.createElement('div');
         div.className = 'card-evento';
-        div.innerHTML = `<strong>${evento.nome}</strong><br><small>${evento.data} - ${evento.local}</small>`;
-        
-        div.onclick = () => {
-            map.flyTo([evento.lat, evento.lng], 15);
-        };
+        div.id = `evento-${evento.id}`;
+        div.innerHTML = `<strong>${evento.nome}</strong><br><small>${evento.data}</small>`;
+        div.onclick = () => { map.flyTo([evento.lat, evento.lng], 15); abrirCard(evento); destacarCard(evento.id); };
         listaEventos.appendChild(div);
     });
 }
 
-// Inicializa marcadores
 eventos.forEach(evento => {
     L.marker([evento.lat, evento.lng], { icon: iconeVerde })
      .addTo(map)
-     .bindPopup(`<h3>${evento.nome}</h3>`);
+     .on('click', () => { map.flyTo([evento.lat, evento.lng], 15); abrirCard(evento); destacarCard(evento.id); });
 });
 
-renderizarLista(eventos);
+renderizarLista();

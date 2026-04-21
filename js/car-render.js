@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carImage = document.getElementById('car-image-360');
     
-    // Estado inicial: começa na pasta 'prata' (ajuste conforme seu padrão)
+    
     let currentRotation = 1;
     let pastaCor = "prata"; 
 
